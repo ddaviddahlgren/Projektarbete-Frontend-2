@@ -1,7 +1,10 @@
+import EventComponent from "../../components/EventComponent";
+
 const Events =()=>{
+
     return(
         <>
-        <p>Events Page</p>
+           <EventComponent/>
         </>
     );
 }
