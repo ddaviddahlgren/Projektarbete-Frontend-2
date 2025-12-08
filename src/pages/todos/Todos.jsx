@@ -12,10 +12,12 @@ const Todos = () => {
 
   // Funktion för att hantera ny todo
   const handleAddTodo = () => {
+    // *förbättringsområde? - om jag behöver validera att title finns annars skickar fel meddelande*
     const newTodo = {
+      id: Date.now(), // Lägg till unik ID till varje nya todo
       title,
       description,
-      time,
+      time: Number(time),
       category,
       deadline,
       status: false,
@@ -32,6 +34,8 @@ const Todos = () => {
 
   return (
     <div>
+      {/* ---------- Inputfältet delen ----------  
+          ------------- Flytta snart ------------ */}
       <h3>Todos Page</h3>
       <div className={style.inputContiner}>
         <input
@@ -63,6 +67,21 @@ const Todos = () => {
         />
         <button onClick={handleAddTodo}>Save new todo</button>
       </div>
+      {/* ---------- Inputfältet delen ---------- 
+          ------------- Flytta snart ------------ */}
+
+      {/* -------- Todo-listor renderas ---------  
+          ------------- Flytta snart ------------ */}
+      <h5>Todo-lists</h5>
+      {todos.map((todo) => (
+        <div key={todo.id} className={style.todoList}>
+          <h6>Title: {todo.title}</h6>
+          <p>Description: {todo.description}</p>
+          {todo.status ? "Checked" : "In progress"}
+        </div>
+      ))}
+      {/* -------- Todo-listor renderas ---------  
+          ------------- Flytta snart ------------ */}
     </div>
   );
 };
