@@ -32,6 +32,13 @@ const Todos = () => {
     setDeadline("");
   };
 
+  // Funktion för att ta bort todo list
+  const handleDeleteTodo = (id) => {
+    const updatedTodo = todos.filter((todo) => todo.id !== id);
+    // Updatera todo lista efter ta bort valda todo med delete knappen
+    setTodos(updatedTodo);
+  }
+
   return (
     <div>
       {/* ---------- Inputfältet delen ----------  
@@ -80,6 +87,7 @@ const Todos = () => {
           {todo.status ? "Checked" : "In progress"}
         </div>
       ))}
+      <button onClick={() => handleDeleteTodo(todos.id)}>Delete todo</button>
       {/* -------- Todo-listor renderas ---------  
           ------------- Flytta snart ------------ */}
     </div>
