@@ -4,11 +4,14 @@ import Home from './pages/home/Home'
 import Habits from './pages/habits/Habits'
 import Todos from './pages/todos/Todos'
 import Events from './pages/events/Events'
+import { EventProvider } from './context/EventContext'
+
 
 function App() {
 
   return (
     <>
+    <EventProvider>
     <Router>
       <Routes>
         <Route path='/' element={<Home/>} />
@@ -18,6 +21,7 @@ function App() {
         {/* <Route path='*' element={} /> */}
       </Routes>
     </Router>
+    </EventProvider>
     </>
   )
 }

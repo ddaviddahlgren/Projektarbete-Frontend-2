@@ -1,4 +1,4 @@
-import EventComponent from "../../components/EventComponent";
+import EventComponent from "../../components/Events/EventComponent";
 
 const Events =()=>{
 
