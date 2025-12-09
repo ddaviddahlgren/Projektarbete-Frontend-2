@@ -1,8 +1,12 @@
-const Habits =()=>{
-    return(
+import Habits from "../components/Habits/Habits";
+
+export default function HabitsPage(){
+
+    return (
         <>
-        <p>Habits Page</p>
+            <h1>Habits Page</h1>
+            <Habits />
         </>
-    );
+    )
+
 }
-export default Habits;

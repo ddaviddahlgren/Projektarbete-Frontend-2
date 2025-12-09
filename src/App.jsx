@@ -4,6 +4,7 @@ import Home from './pages/home/Home'
 import Todos from './pages/todos/Todos'
 import Events from './pages/events/Events'
 import { EventProvider } from './context/EventContext'
+import Habits from './pages/habits/Habits'
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path="/habits" element={<HabitsPage />}></Route>
+        <Route path="/habits" element={<Habits />}></Route>
         <Route path='/todos' element={<Todos/>} />     {/* Manau gör Todos <Route></Route> */}
         <Route path='/events' element={<Events/>} />   {/* Oscar gör Event Planner <Route></Route> */}
         {/* <Route path='*' element={} /> */}
