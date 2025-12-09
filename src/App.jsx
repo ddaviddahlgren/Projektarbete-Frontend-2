@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import './App.css'
+import HabitsPage from './pages/HabitsPage'
+
 
 function App() {
 
@@ -8,7 +10,7 @@ function App() {
     <>
     <Router>
       <Routes>
-        {/* David gör Habits <Route></Route> */}
+        <Route path="/habits" element={<HabitsPage />}></Route>
         {/* Manau gör Todos <Route></Route> */}
         {/* Oscar gör Event Planner <Route></Route> */}
       </Routes>
