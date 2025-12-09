@@ -12,7 +12,11 @@ const Todos = () => {
   const [time, setTime] = useState(Number(null));
   const [category, setCategory] = useState("");
   const [deadline, setDeadline] = useState("");
+  const [editTodoId, setEditTodoId] = useState(null);
+  const [editTitle, setEditTitle] = useState("");
+  const [editDescription, setEditDescription] = useState("");
 
+  // Spara todo listor i localStorage
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
@@ -57,7 +61,29 @@ const Todos = () => {
     );
   };
 
+  // Array till todos categories
   const categories = ["Category", "Study", "Work", "Health", "Lifestyle"];
+
+  // Redigera Todo-title
+  const editingTodo = (todo) => {
+    setEditTodoId(todo.id);
+    setEditTitle(todo.title);
+    setEditDescription(todo.description);
+  };
+
+  // Spara redigering
+  const saveEdit = (id) => {
+    const updatedTodo = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, title: editTitle, description: editDescription };
+      }
+      return todo;
+    });
+    setTodos(updatedTodo);
+    setEditTodoId(null);
+    setEditTitle("");
+    setEditDescription("");
+  };
 
   return (
     <div className={style.container}>
@@ -111,26 +137,42 @@ const Todos = () => {
       <h5>Todo-lists</h5>
       {todos.map((todo) => (
         <div
-          key={todo.id}
-          className={`${style.todoItem} ${
-            todo.status ? style.todoItemCompleted : ""
-          }`}
-        >
+          key={todo.id} className={`${style.todoItem} ${todo.status ? style.todoItemCompleted : ""}`} >
           <input
             type="checkbox"
             checked={todo.status}
             onChange={() => handleToggleStatus(todo.id)}
           />
 
-          <h6>Title: {todo.title}</h6>
-          <p>Description: {todo.description}</p>
-          {todo.status ? "Checked" : "In progress"}
-          <br />
+          {editTodoId === todo.id ? (
+            <div>
+              <input
+                placeholder="Title"
+                value={editTitle}
+                onChange={(e) => setEditTitle(e.target.value)}
+              />
+
+              <textarea
+                placeholder="Description"
+                value={editDescription}
+                onChange={(e) => setEditDescription(e.target.value)}
+              />
+
+              <button onClick={() => saveEdit(todo.id)}>Spara ✅</button>
+              <button onClick={() => setEditTodoId(null)}>Avbryt ❌</button>
+            </div>
+          ) : (
+            <div>
+              <h6>Title: {todo.title}</h6>
+              <p>Description: {todo.description}</p>
+              <button onClick={() => editingTodo(todo)} className={style.editButton}>Edit Todo ✍🏼</button>
+            </div>
+          )}
           <button
             onClick={() => handleDeleteTodo(todo.id)}
             className={style.deleteButton}
           >
-            Delete todo
+            Delete todo 🗑️
           </button>
         </div>
       ))}
