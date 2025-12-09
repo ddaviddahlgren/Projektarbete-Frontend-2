@@ -1,0 +1,10 @@
+.homeContainer {
+    width: 300px;
+    height: 500px;
+    background-color: peachpuff;
+}
+nav {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}

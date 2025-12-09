@@ -15,7 +15,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path="/habits" element={<Habits />}></Route>
+        <Route path="/habits" element={<Habits />} />
         <Route path='/todos' element={<Todos/>} />     {/* Manau gör Todos <Route></Route> */}
         <Route path='/events' element={<Events/>} />   {/* Oscar gör Event Planner <Route></Route> */}
         {/* <Route path='*' element={} /> */}
