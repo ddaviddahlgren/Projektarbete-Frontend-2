@@ -1,4 +1,4 @@
-import Habits from "../components/Habits/Habits";
+import Habits from "../../components/Habits/Habits";
 
 export default function HabitsPage(){
 
