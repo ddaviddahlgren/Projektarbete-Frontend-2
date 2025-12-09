@@ -1,14 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./Todos.module.css";
 
 const Todos = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const saved = localStorage.getItem("todos");
+    return saved ? JSON.parse(saved) : [];
+  });
   // useState för att spara input värdet
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [time, setTime] = useState("");
+  const [time, setTime] = useState(Number(null));
   const [category, setCategory] = useState("");
   const [deadline, setDeadline] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  console.log(todos);
 
   // Funktion för att hantera ny todo
   const handleAddTodo = () => {
@@ -48,7 +57,7 @@ const Todos = () => {
     );
   };
 
-  const categories = ["Category", "Study", "Work", "Health", "ifestyle"];
+  const categories = ["Category", "Study", "Work", "Health", "Lifestyle"];
 
   return (
     <div className={style.container}>
@@ -71,12 +80,12 @@ const Todos = () => {
         />
 
         <input
-          type="number"
+          type="time"
           placeholder="Time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
         />
-        
+
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           {categories.map((category) => (
             <option>{category}</option>
@@ -112,7 +121,7 @@ const Todos = () => {
             checked={todo.status}
             onChange={() => handleToggleStatus(todo.id)}
           />
-          
+
           <h6>Title: {todo.title}</h6>
           <p>Description: {todo.description}</p>
           {todo.status ? "Checked" : "In progress"}
