@@ -48,7 +48,7 @@ const Todos = () => {
     );
   };
 
-  const categories = ["Study", "Work", "Health", "ifestyle"];
+  const categories = ["Category", "Study", "Work", "Health", "ifestyle"];
 
   return (
     <div className={style.container}>
@@ -62,34 +62,34 @@ const Todos = () => {
           onChange={(e) => setTitle(e.target.value)}
           className={style.inputField}
         />
+
         <textarea
           placeholder="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           className={style.inputField}
         />
+
         <input
           type="number"
           placeholder="Time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
         />
-        {/* <input
-          placeholder="Category"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        /> */}
+        
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           {categories.map((category) => (
             <option>{category}</option>
           ))}
         </select>
+
         <input
           type="date"
           placeholder="Deadline"
           value={deadline}
           onChange={(e) => setDeadline(e.target.value)}
         />
+
         <button onClick={handleAddTodo} className={style.primaryButton}>
           Save new todo
         </button>
@@ -112,6 +112,7 @@ const Todos = () => {
             checked={todo.status}
             onChange={() => handleToggleStatus(todo.id)}
           />
+          
           <h6>Title: {todo.title}</h6>
           <p>Description: {todo.description}</p>
           {todo.status ? "Checked" : "In progress"}
