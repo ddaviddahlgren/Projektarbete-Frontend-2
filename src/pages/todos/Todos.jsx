@@ -1,8 +1,7 @@
 import React from "react";
-import ChooseTodo from "../../components/todos/ChooseTodo";
+import ChooseTodo from "../../components/todos/chooseTodo/ChooseTodo";
 import TodoInput from "../../components/todos/todoInput/TodoInput/TodoInput";
-import TodoItem from "../../components/todos/TodoItem";
-import TodoList from "../../components/todos/TodoList";
+import TodoList from "../../components/todos/todoList/TodoList";
 import style from "./Todos.module.css";
 
 const Todos = () => {
