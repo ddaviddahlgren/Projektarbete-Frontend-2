@@ -1,0 +1,174 @@
+/* body {
+    background: linear-gradient(135deg, #36054c 0%, #010001 100%);
+} */
+
+/* Container */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  border-radius: 1rem;
+}
+
+.container h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.container h5 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin: 2rem 0 1rem 0;
+}
+
+/* Input Container */
+.inputContiner {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Fields */
+.inputField,
+.inputContiner input,
+.inputContiner textarea {
+  width: auto;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f8fafc;
+  font-family: inherit;
+}
+
+.inputField:focus,
+.inputContiner input:focus,
+.inputContiner textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+}
+
+.inputContiner textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* Primary Button */
+.primaryButton {
+  width: 100%;
+  padding: 0.875rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.primaryButton:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Edit Button */
+.editButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  background: #c5b038;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.75rem;
+}
+
+.editButton:hover {
+  background: #dcca26;
+}
+
+/* Delete Button */
+.deleteButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  background: #ef4444;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.75rem;
+}
+
+.deleteButton:hover {
+  background: #dc2626;
+}
+
+/* Todo Item */
+.todoItem {
+  background: linear-gradient(135deg, #ec8059 0%, #480b05 100%) !important;
+  padding: 1.25rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.todoItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.todoItem input[type="checkbox"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-right: 0.75rem;
+  cursor: pointer;
+}
+
+.todoItem h6 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #f0f0f0;
+  margin: 0.5rem 0;
+}
+
+.todoItem p {
+  font-size: 0.875rem;
+  color: #f4f5f8;
+  margin: 0.5rem 0;
+}
+
+.todoItemCompleted {
+  background: linear-gradient(135deg, #84e2c2 0%, #0f6248 100%) !important;
+}
+
+.todoItemCompleted h6,
+.todoItemCompleted p {
+  color: rgb(254, 254, 254) !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .inputContiner {
+    padding: 1rem;
+  }
+}
+
