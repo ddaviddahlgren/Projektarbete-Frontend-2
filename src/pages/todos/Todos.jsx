@@ -32,6 +32,41 @@ const Todos = () => {
 
   // Uppdatera den filtrerade listan 
   useEffect(() => {
+  // Huvud filter och sortering funktionen
+  const applyFilters = () => {
+    let result = todos; // Börjar alltid med hela den aktuella listan
+
+    // 1. Filtrera efter kategori 
+    if (selectedCategories.length > 0) {
+      result = result.filter(todo => selectedCategories.includes(todo.category));
+    }
+
+    // 2. Filtrera efter status
+    if (filterStatus !== 'All Todos') {
+      result = result.filter(todo => {
+        const isCompleted = todo.status === true;
+        return (
+          (filterStatus === 'Checked' && isCompleted) || (filterStatus === 'In progress' && !isCompleted)
+        )
+      })
+    }
+
+    // 3. Sortera listan (Körs efter filtreringen är klar) 
+    if (sortBy) {
+      const [key, direction] = sortBy.split('-'); // Delar 'deadline-asc' i ['deadline', 'asc']
+      // Skapa ny kopia av arrayen innan sortera
+      result = [...result].sort((a, b) => {
+        const aValue = a[key];
+        const bValue = b[key];
+        // Jämförelse logik (Gällande båda datumsrängar och nummer)
+        if (aValue < bValue) return direction === 'asc' ? -1 : 1;
+        if (aValue > bValue) return direction === 'asc' ? 1 : -1;
+        return 0;
+      })
+    }
+    setFilteredTodo(result); // Spara den färdiga listan för rendering
+  };
+
     applyFilters();
   }, [todos, selectedCategories, filterStatus, sortBy]);
 
@@ -110,41 +145,6 @@ const Todos = () => {
       // Lägger till ny kategori
       setSelectedCategory([...selectedCategories, categoryToToggle]);
     }
-  };
-
-  // Huvud filter och sortering funktionen
-  const applyFilters = () => {
-    let result = todos; // Börjar alltid med hela den aktuella listan
-
-    // 1. Filtrera efter kategori 
-    if (selectedCategories.length > 0) {
-      result = result.filter(todo => selectedCategories.includes(todo.category));
-    }
-
-    // 2. Filtrera efter status
-    if (filterStatus !== 'All Todos') {
-      result = result.filter(todo => {
-        const isCompleted = todo.status === true;
-        return (
-          (filterStatus === 'Checked' && isCompleted) || (filterStatus === 'In progress' && !isCompleted)
-        )
-      })
-    }
-
-    // 3. Sortera listan (Körs efter filtreringen är klar) 
-    if (sortBy) {
-      const [key, direction] = sortBy.split('-'); // Delar 'deadline-asc' i ['deadline', 'asc']
-      // Skapa ny kopia av arrayen innan sortera
-      result = [...result].sort((a, b) => {
-        const aValue = a[key];
-        const bValue = b[key];
-        // Jämförelse logik (Gällande båda datumsrängar och nummer)
-        if (aValue < bValue) return direction === 'asc' ? -1 : 1;
-        if (aValue > bValue) return direction === 'asc' ? 1 : -1;
-        return 0;
-      })
-    }
-    setFilteredTodo(result); // Spara den färdiga listan för rendering
   };
 
   return (
