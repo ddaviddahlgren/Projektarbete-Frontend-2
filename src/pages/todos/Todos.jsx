@@ -15,19 +15,7 @@ const Todos = () => {
       </div>
     </>
 
-    //   {/* 3 --------- Todo-listor checked --------
-    //         ------------- Flytta snart ----------- */}
 
-    //     {/* Loopen använder filteredTodo för att visa den sorterade/filtrerade listan */}
-    //     <h5>Todo-lists</h5>
-    //     {filteredTodo.map((todo) => (
-    //     <div
-    //       key={todo.id} className={`${style.todoItem} ${todo.status ? style.todoItemCompleted : ""}`} >
-    //       <input
-    //         type="checkbox"
-    //         checked={todo.status}
-    //         onChange={() => handleToggleStatus(todo.id)}
-    //       />
 
     //   {/* 3 --------- Todo-listor checked --------
     //         ------------- Flytta snart ----------- */}
