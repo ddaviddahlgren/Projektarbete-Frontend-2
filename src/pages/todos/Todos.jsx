@@ -1,7 +1,7 @@
 import React from "react";
-import ChooseTodo from "../../components/todos/chooseTodo/ChooseTodo";
-import TodoInput from "../../components/todos/todoInput/TodoInput/TodoInput";
-import TodoList from "../../components/todos/todoList/TodoList";
+import ChooseTodo from "../../components/todos/chooseTodo/ChooseTodo.jsx";
+import TodoInput from "../../components/todos/todoInput/TodoInput.jsx";
+import TodoList from "../../components/todos/todoList/TodoList.jsx";
 import style from "./Todos.module.css";
 
 const Todos = () => {
@@ -14,39 +14,6 @@ const Todos = () => {
         <TodoList />
       </div>
     </>
-    // <div className={style.container}>
-
-    //     {/* 2 ------------ Filter delen ------------
-    //           ------------- Flytta snart ----------- */}
-    //     <div>
-    //       <h5>Choose by category: </h5>
-    //       {categories.map((category, i) => (
-    //         <button key={i} onClick={() => handleFilterCategory(category)}>{category}</button>
-    //       ))}
-    //     </div>
-    //     <div>
-    //       <h5>Choose by status: </h5>
-    //       <select onChange={(e) => setFilterStatus(e.target.value)} value={filterStatus}>
-    //         <option value="All Todos">All status</option>
-    //         <option value="Checked">Checked</option>
-    //         <option value="In progress">In progress</option>
-    //       </select>
-    //       <select onChange={(e) => setSortBy(e.target.value)} value={sortBy}>
-    //         <option value="">Sort By</option>
-    //         <option value="deadline-asc">Deadline (Tidigast först)</option>
-    //         <option value="deadline-desc">Deadline (Senast först)</option>
-    //         <option value="time-asc">Tid (Kortast först)</option>
-    //         <option value="time-desc">Tid (Längst först)</option>
-    //       </select>
-    //     </div>
-
-    //     {/* 2 ------------ Filter delen ------------
-    //           ------------- Flytta snart ----------- */}
-
-    //   </div>
-
-    //   {/* 1 ---------- Inputfältet delen ----------
-    //         ------------- Flytta snart ------------ */}
 
     //   {/* 3 --------- Todo-listor checked --------
     //         ------------- Flytta snart ----------- */}
