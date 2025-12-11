@@ -1,4 +1,4 @@
-import { createContext, useState} from "react";
+import { createContext, useState,   useEffect, use} from "react";
 
 
 export const EventContext = createContext();
@@ -9,9 +9,15 @@ export const EventProvider = ({children}) => {
     const [description, setDescription] = useState("");
     const [eventDate, setEventDate] = useState("");
     const [eventEndDate, setEventEndDate] = useState("");
-    const [events, setEvents] = useState([]);
     const [editingIndex, setEditingIndex] = useState(null);
     const [editing, setEditing] = useState({});
+    const [filterType, setFilterType] = useState("Default");
+
+    const [events, setEvents] = useState (JSON.parse(localStorage.getItem("events")) || []);
+
+    useEffect(() => {
+        localStorage.setItem("events", JSON.stringify(events));
+    },[events]);
 
     return(
         <EventContext.Provider value={{
@@ -21,7 +27,8 @@ export const EventProvider = ({children}) => {
             eventEndDate, setEventEndDate,
             events, setEvents,
             editingIndex, setEditingIndex,
-            editing, setEditing
+            editing, setEditing,
+            filterType, setFilterType
         }}>
          {children}
         </EventContext.Provider>

@@ -9,6 +9,7 @@ const EventInputs = ({addEvent}) => {
         eventDate, setEventDate,
         eventEndDate, setEventEndDate,
     } = useContext(EventContext);
+    
     return (
         <>
         <input 
@@ -40,7 +41,7 @@ const EventInputs = ({addEvent}) => {
                 onChange={(e)=>setEventEndDate(e.target.value)}/>
             <br/><br/>
 
-            <button onClick={()=> addEvent()}>Add Event</button>
+            <button onClick={()=> addEvent()}>Add Event</button> {/* calling the addEvent function in EventComponent */}
 
         </>
     );

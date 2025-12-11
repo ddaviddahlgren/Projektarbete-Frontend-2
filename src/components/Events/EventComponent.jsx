@@ -1,37 +1,37 @@
 import { useContext, useState } from "react";
 import EventInputs from "./EventInputs";
 import { EventContext } from "../../context/EventContext";
-import EventCard from "./EventCard";
-import EventEditCards from "./EventEditCards";
-
+import FilterEvent from "./FilterEvents";
+import { useNavigate } from "react-router-dom";
 
 
 const EventComponent = () => {
-
     
+    const navigate = useNavigate();
+
     const{
         eventName, setEventName,
         description, setDescription,
         eventDate, setEventDate,
         eventEndDate, setEventEndDate,
         events, setEvents,
-        editingIndex, setEditingIndex,
-        editing, setEditing
     } = useContext(EventContext);
-
 
     const addEvent = () => {
         console.log("Event Added");
 
-        //checking if you filled all fields and selected valid dates
-        if(eventName === "" || description === "" || eventDate === "" || eventEndDate === ""){
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); //need this to be able to set events for today
+
+        if(eventName === "" || description === "" || eventDate === "" || eventEndDate === ""){ // checking if you filled all fields and selected valid dates
             alert("Please fill in all fields");
             return;
-        }else if(new Date(eventDate) < new Date() || new Date(eventEndDate) < new Date() || new Date(eventEndDate) < new Date(eventDate)){
+        }else if(new Date(eventDate) < today || new Date(eventEndDate) < today || new Date(eventEndDate) < new Date(eventDate)){ //checking if dates are valid
             alert("Please select another date");
             return;
         }else{
             const newEvents = {
+                userName: "testUser",
                 name: eventName,
                 description: description,
                 date: eventDate,
@@ -46,67 +46,21 @@ const EventComponent = () => {
             setEventDate("");
             setEventEndDate("");
         }
-        
-    }
-    
-    const deleteEvent = (index) => {
-        const newEventList = events.filter((e, i) => i !== index);
-        setEvents(newEventList);
     }
 
-    const editEvent = (index) => {
-        setEditingIndex(index);
-        setEditing(events[index]);
-       
+    const goBack = () => {
+     navigate("/");
     }
-
-    const saveEdit = (index) => {
-
-        //checking if you filled all fields and selected valid dates
-        if(editing.name === "" || editing.description === "" || editing.date === "" || editing.endDate === ""){
-            alert("Please fill in all fields");
-            return;
-        }else if(new Date(editing.date) < new Date() || new Date(editing.endDate) < new Date() || new Date(editing.endDate) < new Date(editing.date)){
-            alert("Please select another date");
-            return;
-        }
-
-        const updatedEvents = events.map((e, i) => 
-            i === index ? editing : e
-        );
-        setEvents(updatedEvents);
-        setEditingIndex(null);
-        setEditing({});
-    }
-
-    const cancelEdit =()=>{ 
-        setEditingIndex(null);
-        setEditing({});
-    }
-
-
+   
     return(
         <>
+            <button onClick={goBack}>Home</button>
+            <br/>
             <p>Events Page</p>
-            <EventInputs addEvent={addEvent}/>
+            <EventInputs addEvent={addEvent}/> {/* component with all the event inputs*/}
             <div>
                 <h3>Event List</h3>
-                {events.map((event, index) => (
-                    <div className="events" key={index} style={{border: "1px solid black", margin: "10px", padding: "10px"}}>
-                        {editingIndex === index ? 
-                            (
-                                <>
-                                <EventEditCards index={index} editing={editing} saveEdit={saveEdit} cancelEdit={cancelEdit}/>
-                                </>
-                            ):
-                            (
-                                <>
-                                <EventCard event={event} index={(index)} editEvent={editEvent} deleteEvent={deleteEvent}/>
-                                </>  
-                            )
-                        }
-                    </div>
-                ))}
+                <FilterEvent />  {/* //filtering and sorting events by date*/}
             </div>
         </>
     );

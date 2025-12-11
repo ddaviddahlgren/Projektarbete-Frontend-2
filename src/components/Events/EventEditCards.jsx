@@ -1,10 +1,39 @@
 import { useContext } from "react";
 import { EventContext } from "../../context/EventContext";
 
+const EventEditCards =({index})=>{
 
+    const{
+        events, setEvents,
+        editingIndex, setEditingIndex,
+        editing, setEditing,
+    } = useContext(EventContext);
 
-const EventEditCards =({index,saveEdit,cancelEdit})=>{
-    const {editing, setEditing} = useContext(EventContext);
+    const saveEdit = (index) => {
+
+        //checking if you filled all fields and selected valid dates
+        // if(editing.name === "" || editing.description === "" || editing.date === "" || editing.endDate === ""){
+        //     alert("Please fill in all fields");
+        //     return;
+        // }else if(new Date(editing.date) < new Date() || new Date(editing.endDate) < new Date() || new Date(editing.endDate) < new Date(editing.date)){
+        //     alert("Please select another date");
+        //     return;
+        // }
+
+        const updatedEvents = events.map((e, i) => 
+            i === index ? editing : e
+        );
+
+        setEvents(updatedEvents);
+        setEditingIndex(null);
+        setEditing({});
+    }
+
+    const cancelEdit =()=>{ 
+        setEditingIndex(null);
+        setEditing({});
+    }
+
     return(
         <div className="editCard">
             <h4>Event Name:</h4>
