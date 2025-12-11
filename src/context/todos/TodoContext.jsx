@@ -20,7 +20,7 @@ export const TodoProvider = ({ children }) => {
       const [editTitle, setEditTitle] = useState("");
       const [editDescription, setEditDescription] = useState("");
       // State för filtering
-      const [selectedCategories, setSelectedCategory] = useState([]); // default värde ska bli [] för att includes() ska fungera 
+      const [selectedCategories, setSelectedCategories] = useState([]); // default värde ska bli [] för att includes() ska fungera 
       const [filterStatus, setFilterStatus] = useState('All Todos');
       // State för sortering
       const [sortBy, setSortBy] = useState(null); // State för deadline och tidsestamat
@@ -142,26 +142,37 @@ export const TodoProvider = ({ children }) => {
         if (selectedCategories.includes(categoryToToggle)) {
           // Ta bort vald kategori
           let uppdateCategories = selectedCategories.filter((category) => category !== categoryToToggle); 
-          setSelectedCategory(uppdateCategories);
+          setSelectedCategories(uppdateCategories);
         } else {
           // Lägger till ny kategori
-          setSelectedCategory([...selectedCategories, categoryToToggle]);
+          setSelectedCategories([...selectedCategories, categoryToToggle]);
         }
       };
 
     return (
         <TodoContext.Provider value={{ 
             todos,
+            setTodos,
             title,
+            setTitle,
             description,
+            setDescription,
             time,
+            setTime,
             category,
+            setCategory,
             deadline,
+            setDeadline,
             editTodoId,
+            setEditTodoId,
             editDescription,
+            setEditDescription,
             selectedCategories,
+            setSelectedCategories,
             filterStatus,
+            setFilterStatus,
             sortBy,
+            setSortBy,
             filteredTodo,
             handleAddTodo,
             handleDeleteTodo,
