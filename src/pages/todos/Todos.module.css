@@ -84,6 +84,23 @@
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
 }
 
+/* Edit Button */
+.editButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  background: #c5b038;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 0.75rem;
+}
+
+.editButton:hover {
+  background: #dcca26;
+}
+
 /* Delete Button */
 .deleteButton {
   padding: 0.5rem 1rem;
