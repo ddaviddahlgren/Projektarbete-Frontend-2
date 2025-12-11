@@ -1,31 +1,23 @@
-import { useState } from "react";
-
+import { useContext, useState } from "react";
+import { HabitsContext } from "../../context/HabitsContext";
 import Habit from "./Habit";
+import style from "../../pages/habits/Habits.module.css";
 
 export default function Habits() {
-  const [habits, setHabits] = useState([]);
-  const [habitTitle, setHabitTitle] = useState("");
+  const { habits, setHabits, habitTitle, setHabitTitle, handleNewHabit } =
+    useContext(HabitsContext);
 
-  const handleNewHabit = () => {
-    let newHabit = {
-      id: habitTitle,
-      title: habitTitle,
-      reps: 0,
-      prio: "low",
-    };
-    setHabits([newHabit, ...habits]);
-    setHabitTitle("")
-  };
+  
 
   return (
     <>
       <h2>These are your current habits:</h2>
-      <ul className="habit-list">
-      {habits.map((habit, i) => (
-          <li key={i}>
+      <ul className={style.habitsList}>
+        {habits.map((habit, i) => (
+          <li className={style.habit} key={i}>
             <Habit habit={habit} />
           </li>
-      ))}
+        ))}
       </ul>
       <label>Add new habit: </label>
       <input
