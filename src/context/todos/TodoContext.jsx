@@ -150,6 +150,26 @@ export const TodoProvider = ({ children }) => {
       };
 
     return (
-        <TodoContext.Provider value={{}}>{children}</TodoContext.Provider>
+        <TodoContext.Provider value={{ 
+            todos,
+            title,
+            description,
+            time,
+            category,
+            deadline,
+            editTodoId,
+            editDescription,
+            selectedCategories,
+            filterStatus,
+            sortBy,
+            filteredTodo,
+            handleAddTodo,
+            handleDeleteTodo,
+            handleToggleStatus,
+            editingTodo,
+            saveEdit,
+            categories,
+            handleFilterCategory
+        }}>{children}</TodoContext.Provider>
     )
 }
