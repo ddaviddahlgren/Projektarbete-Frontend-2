@@ -25,6 +25,7 @@ export default function Habit({ habit }) {
         </div>
         <div className={style.prioBox}>
           <p>Priority:</p>
+          {/* Kolla koden nedan och lär dig */}
           <select value={habit.prio} onChange={(e) => updatePrio(habit.id, e.target.value)}>
             <option value="high">High</option>
             <option value="medium">Medium</option>

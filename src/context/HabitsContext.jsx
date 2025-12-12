@@ -55,6 +55,11 @@ export const HabitsProvider = ({ children }) => {
     );
   };
 
+  const [prioFilter, setPrioFilter] = useState('all')
+
+  const [sortBy, setSortBy] = useState(null)
+  const [sortOrder, setSortOrder] = useState('asc')
+
   return (
     <HabitsContext.Provider
       value={{
@@ -67,6 +72,12 @@ export const HabitsProvider = ({ children }) => {
         subReps,
         clearReps,
         updatePrio,
+        prioFilter,
+        setPrioFilter,
+        sortBy,
+        setSortBy,
+        sortOrder,
+        setSortOrder
       }}
     >
       {children}
