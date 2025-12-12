@@ -1,0 +1,93 @@
+ul {
+    padding: 0;
+}
+
+.habitsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    padding: auto 0;
+    margin: 1rem auto;
+    width: 1040px;
+    gap: 1rem;
+}
+
+.habit {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    margin: 0.1rem 0.5rem;
+    padding: 2rem auto;
+    background-color: rgb(213, 240, 240);
+    border-radius: 0.1rem;
+    box-shadow: -4px 4px 1px rgb(218, 231, 231);
+    border: 2px solid white;
+}
+
+strong {
+    text-decoration: underline;
+}
+
+.repsBox, .prioBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    gap: 1rem;
+}
+
+.repsBtn, #prioBtn{
+    height: fit-content;
+    background-color: blanchedalmond;
+    border: none;
+    padding: 4px 8px;
+    margin: 0 0.2rem;
+    border-radius: 0.1rem;
+    box-shadow: -2px 2px 1px rgb(60, 80, 80);
+    cursor: pointer;
+    transition: 0.2s ease;
+
+}
+
+.repsBtn:hover {
+    color: rgb(255, 255, 255);
+    background-color: rgb(55, 66, 66);
+    box-shadow: -2px 2px 1px blanchedalmond;
+    transition: 0.2s ease;
+}
+
+#prioBtn.active {
+    color: rgb(255, 255, 255);
+    background-color: rgb(73, 87, 87);
+    box-shadow: 2px -3px 1px rgb(206, 199, 189);
+    transition: 0.2s ease;  
+}
+
+.lowPrio {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: lightblue;
+}
+
+.medPrio {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: burlywood;
+}
+
+.hiPrio {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: rgb(34, 255, 45);
+}
+
+p {
+    margin: 1rem auto;
+}
+ 
