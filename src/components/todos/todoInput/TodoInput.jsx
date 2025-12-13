@@ -8,8 +8,10 @@ const TodoInput = () => {
     setTitle,
     description,
     setDescription,
-    time,
-    setTime,
+    hours,
+    setHours,
+    minutes,
+    setMinutes,
     category,
     setCategory,
     deadline,
@@ -20,44 +22,80 @@ const TodoInput = () => {
 
   return (
     <div className={style.container}>
-      <h3>Todo Page</h3>
+      <h3>Create your todo</h3>
       <div className={style.inputContiner}>
-        <input
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className={style.inputField}
-        />
+        <label for="title">
+          Title:{" "}
+          <input
+            placeholder="Todo"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            className={style.inputField}
+          />
+        </label>
 
-        <textarea
-          placeholder="Description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className={style.inputField}
-        />
+        <label for="description">
+          Desciption:{" "}
+          <textarea
+            placeholder="Add note"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className={style.inputField}
+          />
+        </label>
 
-        <input
-          type="time"
-          placeholder="Time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-        />
+        <div className={style.selectedContainer}>
+          <div className={category}>
+          <label for="category">
+            Category:{" "}
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+            >
+              <option>Select category</option>
+              {categories.map((category, i) => (
+                <option key={category}>
+                  {i + 1}. {category}
+                </option>
+              ))}
+            </select>
+          </label>
+          </div>
 
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
-          <option>select category</option>
-          {categories.map((category) => (
-            <option key={category}>{category}</option>
-          ))}
-        </select>
+          <div className={style.time}>
+          <label for="time">
+            Time:{" "}
+            <input
+              type="number"
+              placeholder="Hours"
+              value={hours}
+              min="0"
+              onChange={(e) => setHours(e.target.value)}
+            />
+            <span> hr </span>
+            <input
+              type="number"
+              placeholder="Minutes"
+              value={minutes}
+              min="0"
+              max="59"
+              onChange={(e) => setMinutes(e.target.value)}
+            />
+            <span> min</span>
+          </label>
+          </div>
+        </div>
 
-        <input
-          type="date"
-          placeholder="Deadline"
-          value={deadline}
-          onChange={(e) => setDeadline(e.target.value)}
-        />
-
-        <button onClick={handleAddTodo} className={style.primaryButton}>
+        <label for="deadling">
+          Deadline:
+          <input
+            type="date"
+            placeholder="Deadline"
+            value={deadline}
+            onChange={(e) => setDeadline(e.target.value)}
+          />
+        </label>
+        <button onClick={handleAddTodo} className={style.saveButton}>
           Save new todo
         </button>
       </div>
