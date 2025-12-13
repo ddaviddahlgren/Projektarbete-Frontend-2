@@ -7,10 +7,12 @@ import style from "./Todos.module.css";
 const Todos = () => {
   return (
     <>
-      <div className={style.todoPage}>
+      <div>
         <h2>Todo Page</h2>
+        <div className={style.todoPage}>
         <TodoInput />
         <ChooseTodo />
+        </div>
         <TodoList />
       </div>
     </>
