@@ -53,9 +53,9 @@ const TodoInput = () => {
               onChange={(e) => setCategory(e.target.value)}
             >
               <option>Select category</option>
-              {categories.map((category, i) => (
+              {categories.map((category) => (
                 <option key={category}>
-                  {i + 1}. {category}
+                  {category}
                 </option>
               ))}
             </select>
