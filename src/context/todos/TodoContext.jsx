@@ -19,7 +19,7 @@ export const TodoProvider = ({ children }) => {
   const [editTodoId, setEditTodoId] = useState(null);
   const [editTitle, setEditTitle] = useState("");
   const [editDescription, setEditDescription] = useState("");
-  // State för filtering
+  // State för filtering version 1.
   const [selectedCategories, setSelectedCategories] = useState([]); // default värde ska bli [] för att includes() ska fungera
   const [filterStatus, setFilterStatus] = useState("All Todos");
   // State för sortering
@@ -58,11 +58,12 @@ export const TodoProvider = ({ children }) => {
 
       // 3. Sortera listan (Körs efter filtreringen är klar)
       if (sortBy) {
-        const [key, direction] = sortBy.split("-"); // Delar 'deadline-asc' i ['deadline', 'asc']
+        const actualKey = sortBy.startsWith('time-') ? 'totalMinutes' : sortBy.split('-')[0];
+        const direction = sortBy.endsWith('-asc') ? 'asc' : 'desc';
         // Skapa ny kopia av arrayen innan sortera
         result = [...result].sort((a, b) => {
-          const aValue = a[key] ?? 0;
-          const bValue = b[key] ?? 0;
+          const aValue = a[actualKey] ?? 0;
+          const bValue = b[actualKey] ?? 0;
           // Jämförelse logik (Gällande båda datumsrängar och nummer)
           if (aValue < bValue) return direction === "asc" ? -1 : 1;
           if (aValue > bValue) return direction === "asc" ? 1 : -1;
@@ -79,7 +80,7 @@ export const TodoProvider = ({ children }) => {
   const handleAddTodo = () => {
     // kontrollera att användare måste fylla titel och category för att kunna jämföra senare
     if (!title.trim() || !category.trim()) {
-      alert("Please fyll Title and choose a category");
+      alert("Please fill Title and choose a category");
       return;
     }
 
