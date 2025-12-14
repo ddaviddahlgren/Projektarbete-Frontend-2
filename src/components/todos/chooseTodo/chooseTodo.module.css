@@ -1,0 +1,70 @@
+.chooseCat, .chooseStatus {
+    background: linear-gradient(135deg, #10105d 0%, #040120 100%);
+    margin: 0.8rem;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+.catBtnContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  place-items: center;
+  text-align: center;
+  align-content: center;
+}
+
+.catContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.catButton {
+  width: 8rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 800;
+  color: white;
+  background: linear-gradient(135deg, #9b66ea 0%, #dd5313 100%);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+  margin: 0.5rem;
+}
+
+/* När användare filtrear efter kategori och klickat på knappen */
+.activeCat {
+    background: #136706;
+    color: #ffffff;
+    border: 2px solid #c0eba5;
+    box-shadow: 0 0 15px rgba(85, 250, 168, 0.8), 0 0 5px rgba(115, 206, 200, 0.72); 
+    box-shadow: none; 
+    transform: scale(1.05);
+}
+
+.sortBySelect {
+  display: grid;
+  grid-template-columns: 0.7fr 1fr;
+  grid-template-rows: 1fr;
+  place-items: center;
+  text-align: center;
+  align-content: center;
+}
+
+select, option {
+  border-radius: 1rem;
+  border: none;
+  font-size: 0.8rem;
+  padding: 0.3rem;
+  margin: 0.5rem;
+}

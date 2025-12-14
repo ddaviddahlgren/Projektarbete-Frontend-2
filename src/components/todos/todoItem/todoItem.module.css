@@ -1,0 +1,164 @@
+/* Todo Item */
+.todoItem {
+  padding: 1rem;
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+  animation: slideIn 0.8s ease-out;
+  background: linear-gradient(135deg, #10105d 0%, #040120 100%);
+  border-radius: 1rem;
+}
+
+/* Check status */
+.todoItem input[type="checkbox"] {
+  width: 1rem;
+  height: 1.25rem;
+  cursor: pointer;
+  accent-color: #a3e699;
+  margin-right: 0.75rem;
+}
+
+/* Todo Content */
+.checkedTodo {
+  display: flex;
+  justify-content: justify;
+  align-items: center;
+}
+
+.todoItem h6 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #62c9cb;
+  margin: 0.5rem;
+}
+
+.todoItem p {
+  font-size: 1rem;
+  color: #ffffff;
+  margin: 0.5rem;
+  line-height: 1.5;
+}
+
+.todoItem textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+/* När den är checked*/
+.editHeader {
+  text-align: center;
+}
+
+.editTodo {
+  color: white;
+}
+
+.todoItemCompleted {
+  background: linear-gradient(135deg, #78bb7e 0%, #045130 100%) !important;
+  border: none;
+  border-radius: 1rem;
+  transition: background-color 0.7s ease;
+}
+
+.todoItemCompleted h6 {
+  color: rgb(191, 243, 191);
+}
+
+/* Edit Button */
+.editButton {
+  max-width: 15%;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #ebb991 0%, #f1de11 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  margin: 0.3rem;
+}
+
+.editButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Delete Button */
+.deleteButton {
+  max-width: 15%;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(135, 11, 11, 0.3);
+  margin: 0.3rem;
+}
+
+.deleteButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+/* Edit section */
+
+.editTitle, .editDescription {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 0.8rem;
+  padding: 0.3rem
+}
+
+.saveEditButton {
+  max-width: 50%;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #4ff04a 0%, #107a41 100%);
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0.3rem;
+}
+
+.cancelEditButton {
+  max-width: 50%;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #a51920 0%, #db455e 100%);
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0.3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .todoItem {
+    padding: 1rem;
+  }
+
+  .todoItem h6 {
+    font-size: 1rem;
+  }
+
+  .todoItem > div {
+    flex-direction: column;
+  }
+
+  .editButton,
+  .deleteButton {
+    width: 100%;
+  }
+}

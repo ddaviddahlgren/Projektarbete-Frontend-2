@@ -1,0 +1,71 @@
+h3 {
+  font-size: 1.5rem;
+}
+
+.container {
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.inputContiner {
+  text-align: justify;
+  background: linear-gradient(135deg, #272781 0%, #040120 100%);
+  padding: 1.6rem;
+  border-radius: 1rem;
+  display: grid;
+  gap: 1rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.selectedContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+select,
+option {
+  width: auto;
+}
+
+input[type="number"] {
+  padding: 0.3rem;
+  border-radius: 0.5rem;
+  border: none;
+  width: 4rem;
+  font-size: 0.8rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 0.8rem;
+  padding: 0.3rem;
+}
+
+.saveButton {
+  width: auto;
+  padding: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: white;
+  background: linear-gradient(135deg, #596bba 0%, #192c70 100%);
+  border: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+@media (max-width: 1120px) {
+  .selectedContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}
