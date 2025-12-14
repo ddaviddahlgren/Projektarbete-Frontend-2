@@ -72,6 +72,7 @@ const TodoItem = ({ todo }) => {
             </div>
             <h6>Todo: {todo.title}</h6>
             <p>Note: {todo.description}</p>
+            <p>Category: {todo.category}</p>
             <p>🗓️ {todo.deadline}</p>
             <p>
               ⏰ {todo.hours} hr. {todo.minutes} min.
