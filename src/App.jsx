@@ -17,11 +17,8 @@ function App() {
           <Routes>
             <Route path='/' element={<Home/>} />
             <Route path="/habits" element={<Habits />} />
-            <Route path='/todos' element={<Todos/>} />     {/* Manau gör Todos <Route></Route> */}
-            <Route path='/events' element={<Events/>} />   {/* Oscar gör Event Planner <Route></Route> */}
-            {/* <Route path='*' element={} /> */}
-            {/* Manau gör Todos <Route></Route> */}
-            {/* Oscar gör Event Planner <Route></Route> */}
+            <Route path='/todos' element={<Todos/>} />    
+            <Route path='/events' element={<Events/>} />  
           </Routes>
         </Router>
       </TodoProvider>
