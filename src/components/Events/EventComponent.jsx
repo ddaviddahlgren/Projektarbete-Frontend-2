@@ -3,11 +3,12 @@ import EventInputs from "./EventInputs";
 import { EventContext } from "../../context/EventContext";
 import FilterEvent from "./FilterEvents";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 const EventComponent = () => {
     
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const{
         eventName, setEventName,
@@ -48,13 +49,15 @@ const EventComponent = () => {
         }
     }
 
-    const goBack = () => {
-     navigate("/");
-    }
+    // const goBack = () => {
+    //  navigate("/");
+    // }
    
     return(
         <>
-            <button onClick={goBack}>Home</button>
+            <Link to="/">
+                <button>Home</button>
+            </Link>
             <br/>
             <p>Events Page</p>
             <EventInputs addEvent={addEvent}/> {/* component with all the event inputs*/}
