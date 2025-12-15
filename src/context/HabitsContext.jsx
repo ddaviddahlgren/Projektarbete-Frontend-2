@@ -29,6 +29,12 @@ export const HabitsProvider = ({ children }) => {
     }
   };
 
+  const handleDeleteHabit = (id) => {
+    const updatedHabits = habits.filter((habit) => habit.id !== id);
+    setHabits(updatedHabits);
+    console.log("Habit removed!")
+  };
+
   const addReps = (id) => {
     setHabits((prev) =>
       prev.map((h) => (h.id === id ? { ...h, reps: h.reps + 1 } : h))
@@ -68,6 +74,7 @@ export const HabitsProvider = ({ children }) => {
         habitTitle,
         setHabitTitle,
         handleNewHabit,
+        handleDeleteHabit,
         addReps,
         subReps,
         clearReps,

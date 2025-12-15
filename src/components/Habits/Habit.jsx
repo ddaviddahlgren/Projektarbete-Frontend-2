@@ -4,7 +4,7 @@ import { HabitsContext } from "../../context/HabitsContext";
 import style from "../../pages/habits/Habits.module.css";
 
 export default function Habit({ habit }) {
-  const { addReps, subReps, clearReps, updatePrio } = useContext(HabitsContext);
+  const { addReps, subReps, clearReps, updatePrio, handleDeleteHabit } = useContext(HabitsContext);
 
   return (
     <>
@@ -39,6 +39,7 @@ export default function Habit({ habit }) {
             }
           ></div>
         </div>
+        <button onClick={() => handleDeleteHabit(habit.id)}>Remove Habit</button>
     </>
   );
 }
