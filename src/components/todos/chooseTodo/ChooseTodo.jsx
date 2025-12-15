@@ -30,10 +30,10 @@ const ChooseTodo = () => {
           ))}
         </div>
       </div>
-      <div className={style.chooseStatus}>
+      <div className={style.chooseContainer}>
         <h3>Choose by status</h3>
         <div className={style.sortBySelect}>
-          <div>
+          <div className={style.chooseStatus}>
             <label>Sort by status</label>
             <select
               onChange={(e) => setFilterStatus(e.target.value)}
@@ -45,7 +45,7 @@ const ChooseTodo = () => {
             </select>
           </div>
 
-          <div>
+          <div className={style.chooseDeadline}>
             <label>Sort by deadline & Time</label>
             <select
               onChange={(e) => setSortBy(e.target.value)}
