@@ -69,3 +69,10 @@ textarea {
     align-items: center;
   }
 }
+
+@media (max-width: 500px) {
+  .container {
+    justify-self: center;
+    max-width: 85%;
+  }
+}
