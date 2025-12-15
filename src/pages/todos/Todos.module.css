@@ -2,6 +2,20 @@
   text-align: center;
 }
 
+.backHome {
+  text-align: right !important;
+  margin: 1rem;
+}    
+
+.backHomeLink {
+    background: linear-gradient(135deg, #8bef88 0%, #479135 100%);
+    margin: 0.5rem;
+    padding: 0.5rem;
+    color: rgba(28, 1, 1, 0.706);
+    border-radius: 0.5rem;
+    font-weight: 500;
+}
+
 .todoPage {
   text-align: center;
   display: flex;
