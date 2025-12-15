@@ -47,13 +47,18 @@ export default function HabitsComponent() {
           </li>
         ))}
       </ul>
+      <form onSubmit={(e) => {
+        e.preventDefault() 
+        handleNewHabit()
+        }}>
       <label>Add new habit: </label>
       <input
         type="text"
         value={habitTitle}
         onChange={(e) => setHabitTitle(e.target.value)}
       />
-      <button onClick={handleNewHabit}>Click to add</button>
+      <button type="sumbit">Click to add</button>
+      </form>
     </>
   );
 }

@@ -3,15 +3,14 @@ import { createContext, useState, useEffect } from "react";
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-
   const [habits, setHabits] = useState(() => {
     const saved = localStorage.getItem("habits");
     return saved ? JSON.parse(saved) : [];
   });
 
   useEffect(() => {
-  localStorage.setItem("habits", JSON.stringify(habits));
-}, [habits]);
+    localStorage.setItem("habits", JSON.stringify(habits));
+  }, [habits]);
 
   const [habitTitle, setHabitTitle] = useState("");
 
@@ -32,7 +31,13 @@ export const HabitsProvider = ({ children }) => {
   const handleDeleteHabit = (id) => {
     const updatedHabits = habits.filter((habit) => habit.id !== id);
     setHabits(updatedHabits);
-    console.log("Habit removed!")
+    console.log("Habit removed!");
+  };
+
+  const updateTitle = (id, newTitle) => {
+    setHabits((prev) =>
+      prev.map((h) => (h.id === id ? { ...h, title: newTitle } : h))
+    );
   };
 
   const addReps = (id) => {
@@ -61,10 +66,10 @@ export const HabitsProvider = ({ children }) => {
     );
   };
 
-  const [prioFilter, setPrioFilter] = useState('all')
+  const [prioFilter, setPrioFilter] = useState("all");
 
-  const [sortBy, setSortBy] = useState(null)
-  const [sortOrder, setSortOrder] = useState('asc')
+  const [sortBy, setSortBy] = useState(null);
+  const [sortOrder, setSortOrder] = useState("asc");
 
   return (
     <HabitsContext.Provider
@@ -75,6 +80,7 @@ export const HabitsProvider = ({ children }) => {
         setHabitTitle,
         handleNewHabit,
         handleDeleteHabit,
+        updateTitle,
         addReps,
         subReps,
         clearReps,
@@ -84,7 +90,7 @@ export const HabitsProvider = ({ children }) => {
         sortBy,
         setSortBy,
         sortOrder,
-        setSortOrder
+        setSortOrder,
       }}
     >
       {children}

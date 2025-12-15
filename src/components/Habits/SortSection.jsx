@@ -3,7 +3,8 @@ import { HabitsContext } from "../../context/HabitsContext";
 import style from "../../pages/habits/Habits.module.css";
 
 export default function SortSection() {
-  const { sortBy, setSortBy, sortOrder, setSortOrder } = useContext(HabitsContext);
+  const { sortBy, setSortBy, sortOrder, setSortOrder } =
+    useContext(HabitsContext);
 
   const handleSort = (type, order) => {
     setSortBy(type);
@@ -13,13 +14,28 @@ export default function SortSection() {
   return (
     <>
       <h4>Sortera efter antal repetitioner</h4>
-      <button id={style.prioBtn}
-        className={sortBy === "reps" && sortOrder === "desc" ? style.active : ""}
+      <button
+        id={style.prioBtn}
+        className={!sortBy ? style.active : ""}
+        onClick={() => {
+          setSortBy(null);
+          setSortOrder("asc");
+        }}
+      >
+        Standard
+      </button>
+
+      <button
+        id={style.prioBtn}
+        className={
+          sortBy === "reps" && sortOrder === "desc" ? style.active : ""
+        }
         onClick={() => handleSort("reps", "desc")}
       >
         Flest
       </button>
-      <button id={style.prioBtn}
+      <button
+        id={style.prioBtn}
         className={sortBy === "reps" && sortOrder === "asc" ? style.active : ""}
         onClick={() => handleSort("reps", "asc")}
       >
