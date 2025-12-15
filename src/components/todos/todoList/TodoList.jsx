@@ -8,7 +8,7 @@ const TodoList = () => {
 
   return (
     <div>
-      <h3>Todo-lists</h3>
+      <h3 className={style.todoListHeader}>Todo-lists</h3>
       <div className={style.todoContainer}>
         {/* Loopen använder filteredTodo för att visa den sorterade/filtrerade listan */}
         {filteredTodo.map((todo) => (

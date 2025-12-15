@@ -22,7 +22,7 @@ const TodoInput = () => {
 
   return (
     <div className={style.container}>
-      <h3>Create your todo</h3>
+      <h3 className={style.todoInputHeader}>Create your todo</h3>
       <div className={style.inputContiner}>
         <label for="title">
           Title:{" "}
@@ -51,10 +51,11 @@ const TodoInput = () => {
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
+              className={style.todoInputSelect}
             >
               <option>Select category</option>
               {categories.map((category) => (
-                <option key={category}>
+                <option key={category} className={style.todoInputOption}>
                   {category}
                 </option>
               ))}
@@ -71,6 +72,7 @@ const TodoInput = () => {
               value={hours}
               min="0"
               onChange={(e) => setHours(e.target.value)}
+              className={style.inputField}
             />
             <span> hr </span>
             <input
@@ -80,6 +82,7 @@ const TodoInput = () => {
               min="0"
               max="59"
               onChange={(e) => setMinutes(e.target.value)}
+              className={style.inputField}
             />
             <span> min</span>
           </label>
@@ -93,6 +96,7 @@ const TodoInput = () => {
             placeholder="Deadline"
             value={deadline}
             onChange={(e) => setDeadline(e.target.value)}
+            className={style.inputField}
           />
         </label>
         <button onClick={handleAddTodo} className={style.saveButton}>

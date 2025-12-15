@@ -8,7 +8,7 @@ const Todos = () => {
   return (
     <>
       <div>
-        <h2>Todo Page</h2>
+        <h2 className={style.todoPageHeader}>Todo Page</h2>
         <div className={style.todoPage}>
         <TodoInput />
         <ChooseTodo />

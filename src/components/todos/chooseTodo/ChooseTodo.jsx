@@ -15,7 +15,7 @@ const ChooseTodo = () => {
   return (
     <div>
       <div className={style.chooseCat}>
-        <h3>Choose by category</h3>
+        <h3 className={style.chooseTodoHeader}>Choose by category</h3>
         <div className={style.catBtnContainer}>
           {categories.map((category, i) => (
             <button
@@ -31,17 +31,18 @@ const ChooseTodo = () => {
         </div>
       </div>
       <div className={style.chooseContainer}>
-        <h3>Choose by status</h3>
+        <h3 className={style.chooseTodoHeader}>Choose by status</h3>
         <div className={style.sortBySelect}>
           <div className={style.chooseStatus}>
             <label>Sort by status</label>
             <select
               onChange={(e) => setFilterStatus(e.target.value)}
               value={filterStatus}
+              className={style.chooseTodoSelect}
             >
-              <option value="All Todos">All status</option>
-              <option value="Checked">Checked</option>
-              <option value="In progress">In progress</option>
+              <option value="All Todos" className={style.chooseTodoOption}>All status</option>
+              <option value="Checked" className={style.chooseTodoOption}>Checked</option>
+              <option value="In progress" className={style.chooseTodoOption}>In progress</option>
             </select>
           </div>
 

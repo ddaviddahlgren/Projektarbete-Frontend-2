@@ -1,4 +1,4 @@
-h3 {
+.todoInputHeader {
   font-size: 1.5rem;
 }
 
@@ -23,8 +23,8 @@ h3 {
   align-items: center;
 }
 
-select,
-option {
+.todoInputSelect,
+.todoInputOption {
   width: auto;
 }
 
@@ -36,8 +36,7 @@ input[type="number"] {
   font-size: 0.8rem;
 }
 
-input,
-textarea {
+.inputField {
   width: 100%;
   border-radius: 0.5rem;
   border: none;
