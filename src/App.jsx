@@ -6,12 +6,14 @@ import Events from "./pages/events/Events";
 import { EventProvider } from "./context/EventContext";
 import Habits from "./pages/habits/Habits";
 import { HabitsProvider } from "./context/HabitsContext";
+import { TodoProvider } from './context/todos/TodoContext'
 
 function App() {
   return (
     <>
       <EventProvider>
         <HabitsProvider>
+          <TodoProvider>
           <Router>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -20,6 +22,7 @@ function App() {
               <Route path="/events" element={<Events />} />
             </Routes>
           </Router>
+          </TodoProvider>
         </HabitsProvider>
       </EventProvider>
     </>
