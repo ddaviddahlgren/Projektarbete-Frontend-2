@@ -37,7 +37,7 @@ const EventComponent = () => {
             return;
         }else{
             const newEvents = {
-                userName: loggedInUser.username, //SET NEW EVENT TO LOGGED IN USER SO ONLY THEY CAN SEE THEIR EVENTS
+                // userName: loggedInUser.username, //SET NEW EVENT TO LOGGED IN USER SO ONLY THEY CAN SEE THEIR EVENTS
                 name: eventName,
                 description: description,
                 date: eventDate,
@@ -47,7 +47,7 @@ const EventComponent = () => {
             // setEvents([...events, newEvents]);
     
              const updatedUsers = users.map(user => 
-                user.username === loggedInUser.username 
+                user.id === loggedInUser.id 
                 ? { ...user, events: [...user.events, newEvents] }
                 : user
             );

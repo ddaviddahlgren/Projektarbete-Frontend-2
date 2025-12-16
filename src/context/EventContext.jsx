@@ -13,12 +13,6 @@ export const EventProvider = ({children}) => {
     const [editing, setEditing] = useState({});
     const [filterType, setFilterType] = useState("Default");
 
-    // const [events, setEvents] = useState (JSON.parse(localStorage.getItem("events")) || []);
-
-    // useEffect(() => {
-    //     localStorage.setItem("events", JSON.stringify(events));
-    // },[events]);
-
     return(
         <EventContext.Provider value={{
             eventName, setEventName,
