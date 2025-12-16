@@ -33,6 +33,11 @@ export const TodoProvider = ({ children }) => {
   useEffect(() => {
     // Huvud filter och sortering funktionen
     const applyFilters = () => {
+      
+      if (!loggedInUser || !loggedInUser.todos) {
+        setFilteredTodo([]);
+        return;
+        }
       let result = loggedInUser.todos; // Börjar alltid med hela den aktuella listan
 
       // 1. Filtrera efter kategori
