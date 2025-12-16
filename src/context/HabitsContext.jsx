@@ -1,4 +1,5 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
+import { UserContext } from "./users/UserContext";
 
 export const HabitsContext = createContext();
 
@@ -7,6 +8,8 @@ export const HabitsProvider = ({ children }) => {
     const saved = localStorage.getItem("habits");
     return saved ? JSON.parse(saved) : [];
   });
+
+  const { username, users, setUsers, loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     localStorage.setItem("habits", JSON.stringify(habits));
@@ -18,14 +21,22 @@ export const HabitsProvider = ({ children }) => {
     if (!habitTitle) alert("Please type in a title");
     else {
       let newHabit = {
+        username: username,
         id: Date.now(),
         title: habitTitle,
         reps: 0,
         prio: "low",
       };
-      setHabits((prev) => [newHabit, ...prev]);
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user.id === loggedInUser.id
+            ? { ...user, habits: [newHabit, ...user.habits] }
+            : user
+        )
+      );
       setHabitTitle("");
     }
+    console.log(users);
   };
 
   const handleDeleteHabit = (id) => {

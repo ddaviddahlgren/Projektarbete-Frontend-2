@@ -18,7 +18,10 @@ const Login =()=>{
         const newUser = {
             username: username,
             password: password,
-            id:users.length + 1
+            id:users.length + 1,
+            habits: [],
+            todos: [],
+            events: []
         };
 
         setUsers([...users, newUser]);
