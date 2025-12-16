@@ -4,13 +4,6 @@ import { UserContext } from "../../../context/users/UserContext.jsx";
 import style from "./TodoInput.module.css";
 
 const TodoInput = () => {
-  // State för att spara input värdet
-  // const [title, setTitle] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [hours, setHours] = useState("");
-  // const [minutes, setMinutes] = useState("");
-  // const [category, setCategory] = useState("");
-  // const [deadline, setDeadline] = useState("");
 
   const {
     title,
@@ -28,47 +21,6 @@ const TodoInput = () => {
     categories,
     handleAddTodo,
   } = useContext(TodoContext);
-
-  // Funktion för att hantera ny todo
-  // const handleAddTodo = () => {
-  //   // kontrollera att användare måste fylla titel och category för att kunna jämföra senare
-  //   if (!title.trim() || !category.trim()) {
-  //     alert("Please fill Title and choose a category");
-  //     return;
-  //   }
-
-  //   // För att ska kunna jämföra senare, konverterar jag timme till 60 minuter plus minuter
-  //   const totalMinutes = (Number(hours) || 0) * 60 + (Number(minutes) || 0);
-
-  //   const newTodo = {
-  //     userName: loggedInUser.username,
-  //     id: Date.now(), // Lägg till unik ID till varje nya todo
-  //     title,
-  //     description,
-  //     hours: Number(hours),
-  //     minutes: Number(minutes),
-  //     totalMinutes,
-  //     category,
-  //     deadline,
-  //     status: false,
-  //   };
-
-  //   // // Spara ny todo i todos-hook
-  //   // setUsers([...users.todo, newTodo]);
-
-  //   const updatedUsers = users.map(user =>
-  //           user.id === loggedInUser.id
-  //           ? { ...user, events: [...user.events, newEvents] }
-  //           : user
-  //       );
-  //   // Töm input fältet efter skapar ny todo
-  //   setTitle("");
-  //   setDescription("");
-  //   setHours("");
-  //   setMinutes("");
-  //   setCategory("");
-  //   setDeadline("");
-  // };
 
   return (
     <div className={style.container}>
