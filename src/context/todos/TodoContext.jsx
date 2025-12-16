@@ -1,13 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { UserContext } from "../users/UserContext";
 
 export const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
-  // State som lagrar todo listor i localStorage
-  const [todos, setTodos] = useState(() => {
-    const saved = localStorage.getItem("todos");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const { loggedInUser, setUsers } = useContext(UserContext);
+
+  const todos = loggedInUser.todos || [];
+
   // State för att spara input värdet
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -26,11 +26,6 @@ export const TodoProvider = ({ children }) => {
   const [sortBy, setSortBy] = useState(null); // State för deadline och tidsestamat
   // State för den färdigfiltrerade/sorterade listan som renderas
   const [filteredTodo, setFilteredTodo] = useState([]);
-
-  // Spara todo listor i localStorage
-  useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos)); // Kör varje gång todos ändras
-  }, [todos]);
 
   // Uppdatera den filtrerade listan
   useEffect(() => {
@@ -58,8 +53,10 @@ export const TodoProvider = ({ children }) => {
 
       // 3. Sortera listan (Körs efter filtreringen är klar)
       if (sortBy) {
-        const actualKey = sortBy.startsWith('time-') ? 'totalMinutes' : sortBy.split('-')[0];
-        const direction = sortBy.endsWith('-asc') ? 'asc' : 'desc';
+        const actualKey = sortBy.startsWith("time-")
+          ? "totalMinutes"
+          : sortBy.split("-")[0];
+        const direction = sortBy.endsWith("-asc") ? "asc" : "desc";
         // Skapa ny kopia av arrayen innan sortera
         result = [...result].sort((a, b) => {
           const aValue = a[actualKey] ?? 0;
@@ -99,8 +96,14 @@ export const TodoProvider = ({ children }) => {
       status: false,
     };
 
-    // Spara ny todo i todos-hook
-    setTodos([...todos, newTodo]);
+    setUsers((prev) =>
+      prev.map((user) =>
+        user.id === loggedInUser.id
+          ? { ...user, todos: [newTodo, ...user.todos] }
+          : user
+      )
+    );
+
     // Töm input fältet efter skapar ny todo
     setTitle("");
     setDescription("");
@@ -112,18 +115,28 @@ export const TodoProvider = ({ children }) => {
 
   // Funktion för att ta bort todo list
   const handleDeleteTodo = (id) => {
-    // När ID matchar, filterar bort den ärenden
-    const updatedTodo = todos.filter((todo) => todo.id !== id);
-    // Updatera todo lista efter ta bort valda todo med delete knappen
-    setTodos(updatedTodo);
+    setUsers((prev) =>
+      prev.map((user) =>
+        user.id === loggedInUser.id
+          ? { ...user, todos: user.todos.filter((t) => t.id !== id) }
+          : user
+      )
+    );
   };
 
   // Funktion för att växla status
-  const handleToggleStatus = (id) => {
-    setTodos(
+  const handleToggleStatus = (id, newStatus) => {
+    setUsers((prev) =>
       // Mappar och returnerar ett nytt objekt för den matchande todon
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, status: !todo.status } : todo
+      prev.map((user) =>
+        user.id === loggedInUser.id
+          ? {
+              ...user,
+              todos: user.todos.map((t) =>
+                t.id === id ? { ...to, status: newStatus } : t
+              )
+            }
+          : user
       )
     );
   };
@@ -144,7 +157,7 @@ export const TodoProvider = ({ children }) => {
       }
       return todo;
     });
-    setTodos(updatedTodo);
+    // setTodos(updatedTodo);
     setEditTodoId(null);
     setEditTitle("");
     setEditDescription("");
@@ -171,7 +184,7 @@ export const TodoProvider = ({ children }) => {
     <TodoContext.Provider
       value={{
         todos,
-        setTodos,
+        // setTodos,
         title,
         setTitle,
         description,

@@ -13,15 +13,12 @@ const Home = () => {
   
   const todos = loggedInUser?.todos || []
   const topTodos = [...todos]
-  .filter(todo => todo.category === "Work")
+  .filter(todo => todo.status === false)
   .slice(0, 3)
 
   const events = loggedInUser?.events || []
   const topEvents = [...events]
   .slice(0, 3)
-
-
-
 
   return (
     <>
@@ -60,6 +57,13 @@ const Home = () => {
           <div className={style.homeContainer}>
             <h3>TOP 3 EVENTS</h3>
             {topEvents.length === 0 && <p>No events yet</p>}
+            <ul>
+              {topEvents.map((event) => (
+                <li key={event.id}>
+                  {event.name} - Date: {event.date}
+                </li>
+              ))}
+            </ul>
             </div>
         </Link>
       </nav>

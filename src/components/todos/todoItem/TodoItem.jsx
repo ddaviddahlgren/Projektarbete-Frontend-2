@@ -66,7 +66,7 @@ const TodoItem = ({ todo }) => {
               <input
                 type="checkbox"
                 checked={todo.status}
-                onChange={() => handleToggleStatus(todo.id)}
+                onChange={(e) => handleToggleStatus(todo.id, e.target.value)}
               />
               <p>Status: {!todo.status ? 'In progress': 'Checked'}</p>
             </div>
