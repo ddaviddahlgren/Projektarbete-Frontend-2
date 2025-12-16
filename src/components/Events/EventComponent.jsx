@@ -44,7 +44,7 @@ const EventComponent = () => {
             };
             
             setEvents([...events, newEvents]);
-
+    
             //clear input fields after adding event
             setEventName("");
             setDescription("");
