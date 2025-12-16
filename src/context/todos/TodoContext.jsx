@@ -4,10 +4,10 @@ import { UserContext } from "../users/UserContext";
 export const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
-  const { loggedInUser, setUsers } = useContext(UserContext);
+  const { users, loggedInUser, setUsers } = useContext(UserContext);
 
-  const todos = loggedInUser.todos || [];
-  
+  const todos = loggedInUser?.todos || [];
+
   // Test
 
   // State för att spara input värdet
@@ -28,8 +28,6 @@ export const TodoProvider = ({ children }) => {
   const [sortBy, setSortBy] = useState(null); // State för deadline och tidsestamat
   // State för den färdigfiltrerade/sorterade listan som renderas
   const [filteredTodo, setFilteredTodo] = useState([]);
-
-
 
   // Uppdatera den filtrerade listan
   useEffect(() => {
@@ -75,7 +73,47 @@ export const TodoProvider = ({ children }) => {
     };
 
     applyFilters();
-  }, [todos, selectedCategories, filterStatus, sortBy]);
+  }, [loggedInUser, selectedCategories, filterStatus, sortBy]);
+
+  const handleAddTodo = () => {
+    // kontrollera att användare måste fylla titel och category för att kunna jämföra senare
+    if (!title.trim() || !category.trim()) {
+      alert("Please fill Title and choose a category");
+      return;
+    }
+
+    // För att ska kunna jämföra senare, konverterar jag timme till 60 minuter plus minuter
+    const totalMinutes = (Number(hours) || 0) * 60 + (Number(minutes) || 0);
+
+    const newTodo = {
+      id: Date.now(), // Lägg till unik ID till varje nya todo
+      title,
+      description,
+      hours: Number(hours),
+      minutes: Number(minutes),
+      totalMinutes,
+      category,
+      deadline,
+      status: false,
+    };
+
+    const updatedUsers = users.map((user) =>
+      user.id === loggedInUser.id
+        ? { ...user, todos: [...user.todos, newTodo] }
+        : user
+    );
+
+    // // Spara ny todo i todos-hook
+    setUsers([updatedUsers]);
+
+    // Töm input fältet efter skapar ny todo
+    setTitle("");
+    setDescription("");
+    setHours("");
+    setMinutes("");
+    setCategory("");
+    setDeadline("");
+  };
 
   // Funktion för att ta bort todo list
   const handleDeleteTodo = (id) => {
@@ -98,7 +136,7 @@ export const TodoProvider = ({ children }) => {
               ...user,
               todos: user.todos.map((t) =>
                 t.id === id ? { ...to, status: newStatus } : t
-              )
+              ),
             }
           : user
       )
@@ -126,7 +164,7 @@ export const TodoProvider = ({ children }) => {
     setEditTitle("");
     setEditDescription("");
   };
-  
+
   // Filtera todo följande category
   const handleFilterCategory = (categoryToToggle) => {
     if (selectedCategories.includes(categoryToToggle)) {
@@ -140,9 +178,9 @@ export const TodoProvider = ({ children }) => {
       setSelectedCategories([...selectedCategories, categoryToToggle]);
     }
   };
-  
-    // Array till todos categories
-    const categories = ["Study", "Work", "Health", "Lifestyle"];
+
+  // Array till todos categories
+  const categories = ["Study", "Work", "Health", "Lifestyle"];
 
   return (
     <TodoContext.Provider
