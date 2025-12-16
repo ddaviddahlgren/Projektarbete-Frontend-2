@@ -4,12 +4,16 @@ import { EventContext } from "../../context/EventContext";
 import FilterEvent from "./FilterEvents";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/users/UserContext";
 
 
 const EventComponent = () => {
     
-    // const navigate = useNavigate();
+    const{
+        username
+    } = useContext(UserContext);
 
+    
     const{
         eventName, setEventName,
         description, setDescription,
@@ -32,7 +36,7 @@ const EventComponent = () => {
             return;
         }else{
             const newEvents = {
-                userName: "testUser",
+                userName: username, //SET NEW EVENT TO LOGGED IN USER SO ONLY THEY CAN SEE THEIR EVENTS
                 name: eventName,
                 description: description,
                 date: eventDate,
@@ -49,13 +53,9 @@ const EventComponent = () => {
         }
     }
 
-    // const goBack = () => {
-    //  navigate("/");
-    // }
-   
     return(
         <>
-            <Link to="/">
+            <Link to="/home">
                 <button>Home</button>
             </Link>
             <br/>
