@@ -4,9 +4,6 @@ import { UserContext } from "../users/UserContext";
 export const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
-<<<<<<< HEAD
-  
-=======
   const { loggedInUser, setUsers } = useContext(UserContext);
 
   const todos = loggedInUser.todos || [];
@@ -20,7 +17,6 @@ export const TodoProvider = ({ children }) => {
   const [minutes, setMinutes] = useState("");
   const [category, setCategory] = useState("");
   const [deadline, setDeadline] = useState("");
->>>>>>> Testing-Branch
   // State för att redigera ärende
   const [editTodoId, setEditTodoId] = useState(null);
   const [editTitle, setEditTitle] = useState("");
