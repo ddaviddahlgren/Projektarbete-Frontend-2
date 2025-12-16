@@ -10,7 +10,8 @@ import { UserContext } from "../../context/users/UserContext";
 const EventComponent = () => {
     
     const{
-        username
+        users, setUsers,
+        loggedInUser,
     } = useContext(UserContext);
 
     
@@ -19,7 +20,7 @@ const EventComponent = () => {
         description, setDescription,
         eventDate, setEventDate,
         eventEndDate, setEventEndDate,
-        events, setEvents,
+        // events, setEvents,
     } = useContext(EventContext);
 
     const addEvent = () => {
@@ -36,15 +37,22 @@ const EventComponent = () => {
             return;
         }else{
             const newEvents = {
-                userName: username, //SET NEW EVENT TO LOGGED IN USER SO ONLY THEY CAN SEE THEIR EVENTS
+                userName: loggedInUser.username, //SET NEW EVENT TO LOGGED IN USER SO ONLY THEY CAN SEE THEIR EVENTS
                 name: eventName,
                 description: description,
                 date: eventDate,
                 endDate: eventEndDate
             };
             
-            setEvents([...events, newEvents]);
+            // setEvents([...events, newEvents]);
     
+             const updatedUsers = users.map(user => 
+                user.username === loggedInUser.username 
+                ? { ...user, events: [...user.events, newEvents] }
+                : user
+            );
+            setUsers(updatedUsers);
+
             //clear input fields after adding event
             setEventName("");
             setDescription("");
