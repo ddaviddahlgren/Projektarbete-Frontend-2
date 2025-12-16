@@ -1,10 +1,15 @@
 import { useContext } from "react";
 import { EventContext } from "../../context/EventContext";
+import { UserContext } from "../../context/users/UserContext";
 
 const EventEditCards =({index})=>{
 
     const{
-        events, setEvents,
+        users, setUsers,
+        loggedInUser,
+    } = useContext(UserContext);
+
+    const{
         editingIndex, setEditingIndex,
         editing, setEditing,
     } = useContext(EventContext);
@@ -20,11 +25,13 @@ const EventEditCards =({index})=>{
         //     return;
         // }
 
-        const updatedEvents = events.map((e, i) => 
-            i === index ? editing : e
+     const updatedUsers = users.map(user => 
+        user.username === loggedInUser.username ? 
+        {...user, events: user.events.map((e, i) => i === index ? editing : e)}: user
         );
 
-        setEvents(updatedEvents);
+
+        setUsers(updatedUsers);
         setEditingIndex(null);
         setEditing({});
     }
