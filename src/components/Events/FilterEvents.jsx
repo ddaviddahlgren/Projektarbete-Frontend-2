@@ -9,12 +9,13 @@ const FilterEvent=()=>{
 
     const{
         loggedInUser,
+        users,
+
     } = useContext(UserContext);
     
     const{
-        events, setEvents,
-        editingIndex, setEditingIndex,
-        editing, setEditing,
+        editingIndex,
+        editing,
         deleteEvent, editEvent,
         saveEdit, cancelEdit,
         filterType, setFilterType
@@ -23,18 +24,15 @@ const FilterEvent=()=>{
     // filtering events based on if the event has expired or if its still active
     const getFilteredEvents = () => {
         
-        let filtered = events.filter(event => event.userName === loggedInUser.username);
-        
+        const currentUser = users.find(user => user.username === loggedInUser.username);
+        let filtered = currentUser?.events || [];
 
         if(filterType === "Expired"){
             filtered = filtered.filter(event => new Date(event.date) < new Date());
-            // return events.filter(event => new Date(event.date) < new Date());
         } else if(filterType === "Active"){
             filtered = filtered.filter(event => new Date(event.date) >= new Date());
-            // return events.filter(event => new Date(event.date) >= new Date());
         }
             return filtered.sort((a, b) => new Date(a.date) - new Date(b.date)); 
-            // return events; 
     }
 
     return(
