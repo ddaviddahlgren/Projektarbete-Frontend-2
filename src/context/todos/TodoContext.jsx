@@ -104,7 +104,7 @@ export const TodoProvider = ({ children }) => {
     );
 
     // // Spara ny todo i todos-hook
-    setUsers([updatedUsers]);
+    setUsers(updatedUsers);
 
     // Töm input fältet efter skapar ny todo
     setTitle("");
@@ -135,7 +135,7 @@ export const TodoProvider = ({ children }) => {
           ? {
               ...user,
               todos: user.todos.map((t) =>
-                t.id === id ? { ...to, status: newStatus } : t
+                t.id === id ? { ...t, status: newStatus } : t
               ),
             }
           : user
