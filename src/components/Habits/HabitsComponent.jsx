@@ -21,7 +21,7 @@ export default function HabitsComponent() {
       ? [...habits]
       : habits.filter((h) => h.prio === prioFilter);
 
-      // Förstå koden här med
+  // Förstå koden här med
   if (sortBy === "reps") {
     displayedHabits.sort((a, b) =>
       sortOrder === "asc" ? a.reps - b.reps : b.reps - a.reps
@@ -47,17 +47,19 @@ export default function HabitsComponent() {
           </li>
         ))}
       </ul>
-      <form onSubmit={(e) => {
-        e.preventDefault() 
-        handleNewHabit()
-        }}>
-      <label>Add new habit: </label>
-      <input
-        type="text"
-        value={habitTitle}
-        onChange={(e) => setHabitTitle(e.target.value)}
-      />
-      <button type="sumbit">Click to add</button>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleNewHabit();
+        }}
+      >
+        <label>Add new habit: </label>
+        <input
+          type="text"
+          value={habitTitle}
+          onChange={(e) => setHabitTitle(e.target.value)}
+        />
+        <button type="submit">Click to add</button>
       </form>
     </>
   );
