@@ -1,14 +1,27 @@
 import { Link } from "react-router-dom";
 import style from "./Home.module.css";
 import { useContext } from "react";
-import { HabitsContext } from "../../context/HabitsContext";
+import { UserContext } from "../../context//users/UserContext";
 
 const Home = () => {
-  const { habits } = useContext(HabitsContext);
+  const { loggedInUser } = useContext(UserContext);
 
+  const habits = loggedInUser?.habits || []
   const topHabits = [...habits]
   .sort((a, b) => b.reps - a.reps)
   .slice(0, 3);
+  
+  const todos = loggedInUser?.todos || []
+  const topTodos = [...todos]
+  .filter(todo => todo.category === "Work")
+  .slice(0, 3)
+
+  const events = loggedInUser?.events || []
+  const topEvents = [...events]
+  .slice(0, 3)
+
+
+
 
   return (
     <>
@@ -30,11 +43,24 @@ const Home = () => {
         </Link>
         <br />
         <Link to="/todos">
-          <div className={style.homeContainer}>TODOS</div>
+          <div className={style.homeContainer}>
+            <h3>TOP 3 TODOS</h3>
+            {topTodos.length === 0 && <p>No todos yet</p>}
+            <ul>
+              {topTodos.map((todo) => (
+                <li key={todo.id}>
+                  {todo.title} - Status: {todo.status}
+                </li>
+              ))}
+            </ul>
+          </div>
         </Link>
         <br />
         <Link to="/events">
-          <div className={style.homeContainer}>EVENT PLANNER</div>
+          <div className={style.homeContainer}>
+            <h3>TOP 3 EVENTS</h3>
+            {topEvents.length === 0 && <p>No events yet</p>}
+            </div>
         </Link>
       </nav>
     </>
