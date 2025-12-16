@@ -4,12 +4,9 @@ import { UserContext } from "./users/UserContext";
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
-  const [habits, setHabits] = useState(() => {
-    const saved = localStorage.getItem("habits");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const { loggedInUser, setUsers } = useContext(UserContext);
 
-  const { username, users, setUsers, loggedInUser } = useContext(UserContext);
+  const habits = loggedInUser?.habits || [];
 
   useEffect(() => {
     localStorage.setItem("habits", JSON.stringify(habits));
@@ -18,62 +15,69 @@ export const HabitsProvider = ({ children }) => {
   const [habitTitle, setHabitTitle] = useState("");
 
   const handleNewHabit = () => {
-    if (!habitTitle) alert("Please type in a title");
-    else {
-      let newHabit = {
-        username: username,
-        id: Date.now(),
-        title: habitTitle,
-        reps: 0,
-        prio: "low",
-      };
-      setUsers((prevUsers) =>
-        prevUsers.map((user) =>
-          user.id === loggedInUser.id
-            ? { ...user, habits: [newHabit, ...user.habits] }
-            : user
-        )
-      );
-      setHabitTitle("");
+    if (!habitTitle) {
+      alert("Please type in a title");
+      return;
     }
-    console.log(users);
+
+    const newHabit = {
+      id: Date.now(),
+      title: habitTitle,
+      reps: 0,
+      prio: "low",
+    };
+
+    setUsers((prev) =>
+      prev.map((user) =>
+        user.id === loggedInUser.id
+          ? { ...user, habits: [newHabit, ...user.habits] }
+          : user
+      )
+    );
+
+    setHabitTitle("");
   };
 
   const handleDeleteHabit = (id) => {
-    const updatedHabits = habits.filter((habit) => habit.id !== id);
-    setHabits(updatedHabits);
-    console.log("Habit removed!");
+    setUsers((prev) =>
+      prev.map((user) =>
+        user.id === loggedInUser.id
+          ? { ...user, habits: user.habits.filter((h) => h.id !== id) }
+          : user
+      )
+    );
   };
 
   const updateTitle = (id, newTitle) => {
-    setHabits((prev) =>
-      prev.map((h) => (h.id === id ? { ...h, title: newTitle } : h))
+    setUsers((prev) =>
+      prev.map((user) => (user.id === loggedInUser.id ? { ...user, title: newTitle } : h))
     );
   };
 
   const addReps = (id) => {
-    setHabits((prev) =>
-      prev.map((h) => (h.id === id ? { ...h, reps: h.reps + 1 } : h))
+    setUsers((prev) =>
+      prev.map((user) => (user.id === loggedInUser.id ? { ...user, reps: user.reps + 1 } : h))
     );
   };
   const subReps = (id) => {
-    setHabits((prev) =>
-      prev.map((h) => {
-        if (h.id === id) {
-          const newReps = h.reps > 0 ? h.reps - 1 : 0;
-          return { ...h, reps: newReps };
+    setUsers((prev) =>
+      prev.map((user) => {
+        if (user.id === loggedInUser.id) {
+          const newReps = user.reps > 0 ? user.reps - 1 : 0;
+          return { ...user, reps: newReps };
         }
         return h;
       })
     );
   };
   const clearReps = (id) => {
-    setHabits((prev) => prev.map((h) => (h.id === id ? { ...h, reps: 0 } : h)));
+    setUsers((prev) => 
+      prev.map((user) => (user.id === loggedInUser.id ? { ...user, reps: 0 } : h)));
   };
 
   const updatePrio = (id, newPrio) => {
-    setHabits((prev) =>
-      prev.map((h) => (h.id === id ? { ...h, prio: newPrio } : h))
+    setUsers((prev) =>
+      prev.map((user) => (user.id === id ? { ...user, prio: newPrio } : h))
     );
   };
 
@@ -86,7 +90,6 @@ export const HabitsProvider = ({ children }) => {
     <HabitsContext.Provider
       value={{
         habits,
-        setHabits,
         habitTitle,
         setHabitTitle,
         handleNewHabit,
