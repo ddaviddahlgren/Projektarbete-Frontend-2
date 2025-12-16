@@ -89,12 +89,13 @@ const TodoInput = () => {
           </div>
         </div>
 
-        <label for="deadling">
+        <label for="deadline">
           Deadline:
           <input
             type="date"
             placeholder="Deadline"
             value={deadline}
+            min={new Date().toISOString().split('T')[0]}
             onChange={(e) => setDeadline(e.target.value)}
             className={style.inputField}
           />
