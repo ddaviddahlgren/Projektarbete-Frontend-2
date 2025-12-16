@@ -39,6 +39,7 @@ const Login = () => {
     }
 
     setLoggedInUser(user)
+    navigate("/home");
   };
 
   return (
