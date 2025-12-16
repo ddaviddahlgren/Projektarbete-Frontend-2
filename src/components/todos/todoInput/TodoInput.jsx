@@ -74,7 +74,7 @@ const TodoInput = () => {
     <div className={style.container}>
       <h3 className={style.todoInputHeader}>Create your todo</h3>
       <div className={style.inputContiner}>
-        <label for="title">
+        <label>
           Title:{" "}
           <input
             placeholder="Todo"
@@ -84,7 +84,7 @@ const TodoInput = () => {
           />
         </label>
 
-        <label for="description">
+        <label>
           Desciption:{" "}
           <textarea
             placeholder="Add note"
@@ -96,7 +96,7 @@ const TodoInput = () => {
 
         <div className={style.selectedContainer}>
           <div className={category}>
-            <label for="category">
+            <label>
               Category:{" "}
               <select
                 value={category}
@@ -114,7 +114,7 @@ const TodoInput = () => {
           </div>
 
           <div className={style.time}>
-            <label for="time">
+            <label>
               Time:{" "}
               <input
                 type="number"
@@ -139,7 +139,7 @@ const TodoInput = () => {
           </div>
         </div>
 
-        <label for="deadline">
+        <label>
           Deadline:
           <input
             type="date"
