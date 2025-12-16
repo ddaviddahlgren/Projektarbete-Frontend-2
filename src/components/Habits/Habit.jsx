@@ -1,9 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import { HabitsContext } from "../../context/HabitsContext";
 import style from "../../pages/habits/Habits.module.css";
 
 export default function Habit({ habit }) {
+  if (!habit) return null;
+
   const {
     addReps,
     subReps,
@@ -14,7 +16,11 @@ export default function Habit({ habit }) {
   } = useContext(HabitsContext);
 
   const [editing, setEditing] = useState(false);
-  const [placeholder, setPlaceholder] = useState(habit.title);
+  const [placeholder, setPlaceholder] = useState("");
+
+  useEffect(() => {
+    setPlaceholder(habit.title);
+  }, [habit]);
 
   const saveTitle = () => {
     if (!placeholder.trim()) return;

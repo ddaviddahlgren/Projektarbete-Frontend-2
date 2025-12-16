@@ -1,16 +1,13 @@
-import { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 import { UserContext } from "./users/UserContext";
 
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
+
   const { loggedInUser, setUsers } = useContext(UserContext);
 
   const habits = loggedInUser?.habits || [];
-
-  useEffect(() => {
-    localStorage.setItem("habits", JSON.stringify(habits));
-  }, [habits]);
 
   const [habitTitle, setHabitTitle] = useState("");
 
