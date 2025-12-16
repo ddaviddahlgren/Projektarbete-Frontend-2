@@ -50,36 +50,80 @@ export const HabitsProvider = ({ children }) => {
 
   const updateTitle = (id, newTitle) => {
     setUsers((prev) =>
-      prev.map((user) => (user.id === loggedInUser.id ? { ...user, title: newTitle } : h))
+      prev.map((user) =>
+        user.id === loggedInUser.id
+          ? {
+              ...user,
+              habits: user.habits.map((h) =>
+                h.id === id ? { ...h, title: newTitle } : h
+              ),
+            }
+          : user
+      )
     );
   };
 
   const addReps = (id) => {
     setUsers((prev) =>
-      prev.map((user) => (user.id === loggedInUser.id ? { ...user, reps: user.reps + 1 } : h))
+      prev.map((user) =>
+        user.id === loggedInUser.id
+          ? {
+              ...user,
+              habits: user.habits.map((h) =>
+                h.id === id ? { ...h, reps: h.reps + 1 } : h
+              ),
+            }
+          : user
+      )
     );
-  };
-  const subReps = (id) => {
-    setUsers((prev) =>
-      prev.map((user) => {
-        if (user.id === loggedInUser.id) {
-          const newReps = user.reps > 0 ? user.reps - 1 : 0;
-          return { ...user, reps: newReps };
-        }
-        return h;
-      })
-    );
-  };
-  const clearReps = (id) => {
-    setUsers((prev) => 
-      prev.map((user) => (user.id === loggedInUser.id ? { ...user, reps: 0 } : h)));
   };
 
+  const subReps = (id) => {
+  setUsers(prev =>
+    prev.map(user =>
+      user.id === loggedInUser.id
+        ? {
+            ...user,
+            habits: user.habits.map(h =>
+              h.id === id ? { ...h, reps: Math.max(0, h.reps - 1) } : h
+            )
+          }
+        : user
+    )
+  );
+};
+
+  const clearReps = (id) => {
+  setUsers(prev =>
+    prev.map(user =>
+      user.id === loggedInUser.id
+        ? {
+            ...user,
+            habits: user.habits.map(h =>
+              h.id === id ? { ...h, reps: 0 } : h
+            )
+          }
+        : user
+    )
+  );
+};
+
+
   const updatePrio = (id, newPrio) => {
-    setUsers((prev) =>
-      prev.map((user) => (user.id === id ? { ...user, prio: newPrio } : h))
-    );
-  };
+  setUsers(prev =>
+    prev.map(user =>
+      user.id === loggedInUser.id
+        ? {
+            ...user,
+            habits: user.habits.map(h =>
+              h.id === id ? { ...h, prio: newPrio } : h
+            )
+          }
+        : user
+    )
+  );
+};
+
 
   const [prioFilter, setPrioFilter] = useState("all");
 
