@@ -8,7 +8,7 @@ export default function HabitsPage(){
             <h1>Habits Page</h1>
             <HabitsComponent />
             <br />
-            <Link to="/"> Back to Home Page</Link>
+            <Link to="/home"> Back to Home Page</Link>
         </>
     )
 

@@ -10,7 +10,7 @@ const Todos = () => {
       <div>
         <h2 className={style.todoPageHeader}>Todo Page</h2>
         <div className={style.backHome}>
-          <Link to="/" className={style.backHomeLink}>
+          <Link to="/home" className={style.backHomeLink}>
             ⬅️ BACK TO HOME
           </Link>
         </div>
