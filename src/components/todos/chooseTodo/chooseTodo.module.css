@@ -25,10 +25,10 @@
 }
 
 .catButton {
-  width: 8rem;
+  width: 5rem;
   padding: 0.5rem;
-  font-size: 1rem;
-  font-weight: 800;
+  font-size: 0.7rem;
+  font-weight: 600;
   color: white;
   background: linear-gradient(135deg, #9b66ea 0%, #dd5313 100%);
   border: none;
@@ -53,11 +53,6 @@
 }
 
 .sortBySelect {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  place-items: center;
-  text-align: center;
   align-content: center;
 }
 
@@ -65,16 +60,17 @@
   display: flex;
   flex-direction: column;
   background: linear-gradient(135deg, #9b66ea 0%, #dd5313 100%);
-  padding: 1rem;
+  padding: 0.5rem;
   border-radius: 1rem;
+  margin: 0.2rem;
 }
 
 .chooseTodoSelect, .chooseTodoOption {
   border-radius: 1rem;
   border: none;
   font-size: 0.8rem;
-  padding: 0.3rem;
-  margin: 0.5rem;
+  padding: 0.2rem;
+  margin: 0.2rem;
 }
 
 
