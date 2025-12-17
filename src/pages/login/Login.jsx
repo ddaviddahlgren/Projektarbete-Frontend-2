@@ -32,14 +32,15 @@ const Login = () => {
     const user = users.find(
       (u) => u.username === username && u.password === password
     );
-
-    if (!user) {
-      alert("User not found, please register");
-      return;
+    if(user == undefined){
+        alert("User not found, please register");
+        return;
+    }else{
+        setLoggedInUser(user)
+        sessionStorage.setItem('justLoggedIn', 'true'); //sessionstorage to only show quote on login
+        sessionStorage.removeItem('welcomeShown'); // Clear previous welcome
+        navigate("/home");
     }
-
-    setLoggedInUser(user)
-    navigate("/home");
   };
 
   return (

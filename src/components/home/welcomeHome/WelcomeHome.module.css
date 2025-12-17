@@ -1,0 +1,51 @@
+.quoteScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  /* Remove transition from here */
+}
+
+.fadeIn {
+  animation: fadeIn 1s ease-in;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.quoteText {
+  font-size: 24px;
+  font-style: italic;
+  max-width: 600px;
+  text-align: center;
+  margin-bottom: 20px;
+  /* Text will fade in */
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+.quoteAuthor {
+  font-size: 18px;
+  color: #666;
+  /* Author will fade in */
+  opacity: 0;
+  animation: fadeIn 1s ease-in 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
