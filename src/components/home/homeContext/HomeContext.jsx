@@ -40,7 +40,7 @@ const HomeContext =()=>{
             {showWelcome && <WelcomeHome onComplete={handleWelcomeComplete} />}
 
             <BackButton />
-           
+            <h2 > Welcome {loggedInUser?.username}!</h2>
             <nav>
                 <Link to="/habits">
                 <div className={style.homeContainer}>
