@@ -15,7 +15,7 @@ const ChooseTodo = () => {
   return (
     <div>
       <div className={style.chooseCat}>
-        <h3 className={style.chooseTodoHeader}>Choose by category</h3>
+        <h3 className={style.chooseTodoHeader}>FILTER BY CATEGORY</h3>
         <div className={style.catBtnContainer}>
           {categories.map((category, i) => (
             <button
@@ -31,7 +31,7 @@ const ChooseTodo = () => {
         </div>
       </div>
       <div className={style.chooseContainer}>
-        <h3 className={style.chooseTodoHeader}>Choose by status</h3>
+        <h3 className={style.chooseTodoHeader}>SORT BY STATUS</h3>
         <div className={style.sortBySelect}>
           <div className={style.chooseStatus}>
             <label>Sort by status</label>
@@ -51,6 +51,7 @@ const ChooseTodo = () => {
             <select
               onChange={(e) => setSortBy(e.target.value)}
               value={sortBy || ""}
+              className={style.chooseTodoSelect}
             >
               <option value="deadline-asc">Deadline: (Earliest First)</option>
               <option value="deadline-desc">Deadline: (Latest First)</option>
