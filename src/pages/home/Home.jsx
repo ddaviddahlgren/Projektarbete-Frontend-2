@@ -6,27 +6,30 @@ import { UserContext } from "../../context//users/UserContext";
 const Home = () => {
   const { loggedInUser } = useContext(UserContext);
 
-  const habits = loggedInUser?.habits || []
-  const topHabits = [...habits]
-  .sort((a, b) => b.reps - a.reps)
-  .slice(0, 3);
-  
-  const todos = loggedInUser?.todos || []
-  const topTodos = [...todos]
-  .filter(todo => todo.status === false)
-  .slice(0, 3)
+  const habits = loggedInUser?.habits || [];
+  const topHabits = [...habits].sort((a, b) => b.reps - a.reps).slice(0, 3);
 
-  const events = loggedInUser?.events || []
-  const topEvents = [...events]
-  .slice(0, 3)
+  const todos = loggedInUser?.todos || [];
+  const topTodos = [...todos]
+    .filter((todo) => todo.status === false)
+    .slice(0, 3);
+
+  const events = loggedInUser?.events || [];
+  const topEvents = [...events].slice(0, 3);
 
   return (
     <>
-      <h1>Home Page</h1>
-      <nav>
+      <header className={style.header}>
+        <h1 className={style.homeTitle}>
+          PRODUCTIVITY <span id={style.titleSpan}>ASSISTANT</span>
+        </h1>
+        <p id={style.cretisText}>By; Manau, Oscar & David</p>
+      </header>
+      <main className={style.main}>
+        <div className={style.componentContainer}>
+        <h3 className={style.componentTitle}>TOP 3 HABITS</h3>
         <Link to="/habits">
           <div className={style.homeContainer}>
-            <h3>TOP 3 HABITS</h3>
             {topHabits.length === 0 && <p>No habits yet</p>}
 
             <ul>
@@ -38,10 +41,12 @@ const Home = () => {
             </ul>
           </div>
         </Link>
+        </div>
         <br />
+        <div className={style.componentContainer}>
+        <h3 className={style.componentTitle}>TOP 3 TODOS</h3>
         <Link to="/todos">
           <div className={style.homeContainer}>
-            <h3>TOP 3 TODOS</h3>
             {topTodos.length === 0 && <p>No todos yet</p>}
             <ul>
               {topTodos.map((todo) => (
@@ -52,10 +57,12 @@ const Home = () => {
             </ul>
           </div>
         </Link>
+        </div>
         <br />
+        <div className={style.componentContainer}>
+        <h3 className={style.componentTitle}>TOP 3 EVENTS</h3>
         <Link to="/events">
           <div className={style.homeContainer}>
-            <h3>TOP 3 EVENTS</h3>
             {topEvents.length === 0 && <p>No events yet</p>}
             <ul>
               {topEvents.map((event) => (
@@ -64,9 +71,10 @@ const Home = () => {
                 </li>
               ))}
             </ul>
-            </div>
+          </div>
         </Link>
-      </nav>
+        </div>
+      </main>
     </>
   );
 };
