@@ -20,7 +20,7 @@ export const TodoProvider = ({ children }) => {
   const [editTodoId, setEditTodoId] = useState(null);
   const [editTitle, setEditTitle] = useState("");
   const [editDescription, setEditDescription] = useState("");
-  // State för filtering version 1.
+  // State för filtrering
   const [selectedCategories, setSelectedCategories] = useState([]); // default värde ska bli [] för att includes() ska fungera
   const [filterStatus, setFilterStatus] = useState("All Todos");
   // State för sortering
@@ -60,6 +60,7 @@ export const TodoProvider = ({ children }) => {
 
       // 3. Sortera listan (Körs efter filtreringen är klar)
       if (sortBy) {
+        // Identifiera om vi ska sortera på beräknad tid eller ett fast fält som deadline
         const actualKey = sortBy.startsWith("time-")
           ? "totalMinutes"
           : sortBy.split("-")[0];
@@ -156,7 +157,7 @@ export const TodoProvider = ({ children }) => {
 
   // Spara redigering (Uppdatera)
   const saveEdit = (id) => {
-    // setUser uppdatera den globala listan
+    // prevUser säkerställa att vi har senaste state
     setUsers((prevUsers) =>
       prevUsers.map((user) =>
         user.id === loggedInUser.id
