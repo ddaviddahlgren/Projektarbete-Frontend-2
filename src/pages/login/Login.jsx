@@ -17,16 +17,26 @@ const Login = () => {
   } = useContext(UserContext);
 
   const registerUser = () => {
-    const newUser = {
-      username: username,
-      password: password,
-      id: users.length + 1,
-      habits: [],
-      todos: [],
-      events: [],
-    };
 
-    setUsers([...users, newUser]);
+    if(users.find((u) => u.username === username)){
+      alert("User already exists");
+      setPassword("");
+      setUsername("");
+      return;
+    }else{ 
+      alert("User registered, please login"); 
+        const newUser = {
+        username: username,
+        password: password,
+        id: users.length + 1,
+        habits: [],
+        todos: [],
+        events: [],
+      };
+
+      setUsers([...users, newUser]);
+
+    }
   };
 
   const loginUser = () => {
@@ -54,6 +64,7 @@ const Login = () => {
         <input
           type="text"
           placeholder="Username"
+          value={username} 
           autoComplete="username"
           onChange={(e) => {
             setUsername(e.target.value);
@@ -63,6 +74,7 @@ const Login = () => {
         <input
           type="password"
           placeholder="Password"
+          value={password} 
           autoComplete="current-password"
           onChange={(e) => {
             setPassword(e.target.value);

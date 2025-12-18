@@ -10,8 +10,8 @@ export const UserProvider = ({ children }) => {
     JSON.parse(sessionStorage.getItem("loggedInUser")) || null
   );
 
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(users));
