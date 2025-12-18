@@ -40,6 +40,7 @@ const EventComponent = () => {
       return;
     } else {
       const newEvents = {
+        id: Date.now(),
         name: eventName,
         description: description,
         date: eventDate,

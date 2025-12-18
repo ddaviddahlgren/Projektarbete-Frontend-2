@@ -17,9 +17,7 @@ const HomeContext = () => {
   const topHabits = [...habits].sort((a, b) => b.reps - a.reps).slice(0, 3);
 
   const todos = loggedInUser?.todos || [];
-  const topTodos = [...todos]
-    .filter((todo) => todo.status === false)
-    .slice(0, 3);
+  const topTodos = [...todos].filter((todo) => todo.status === false).slice(0, 3);
 
   const events = loggedInUser?.events || [];
   const topEvents = [...events].slice(0, 3);
@@ -46,9 +44,7 @@ const HomeContext = () => {
           <h3 className={style.componentTitle}>HABITS</h3>
           <Link to="/habits">
             <div className={style.homeContainer}>
-              {topHabits.length === 0 && (
-                <p className={style.homeLists}>No habits yet</p>
-              )}
+              {topHabits.length === 0 && <p className={style.homeLists}>No habits yet</p>}
 
               <ul>
                 {topHabits.map((habit) => (
@@ -66,9 +62,7 @@ const HomeContext = () => {
           <h3 className={style.componentTitle}>TODOS</h3>
           <Link to="/todos">
             <div className={style.homeContainer}>
-              {topTodos.length === 0 && (
-                <p className={style.homeLists}>No todos yet</p>
-              )}
+              {topTodos.length === 0 && <p className={style.homeLists}>No todos yet</p>}
               <ul>
                 {topTodos.map((todo) => (
                   <li key={todo.id} className={style.homeLists}>
@@ -85,9 +79,7 @@ const HomeContext = () => {
           <h3 className={style.componentTitle}>EVENTS</h3>
           <Link to="/events">
             <div className={style.homeContainer}>
-              {topEvents.length === 0 && (
-                <p className={style.homeLists}>No events yet</p>
-              )}
+              {topEvents.length === 0 && <p className={style.homeLists}>No events yet</p>}
               <ul>
                 {topEvents.map((event) => (
                   <li key={event.id} className={style.homeLists}>
@@ -101,7 +93,7 @@ const HomeContext = () => {
         </div>
       </main>
       <footer>
-        <BackButton/>
+        <BackButton />
       </footer>
     </div>
   );

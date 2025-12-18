@@ -6,15 +6,7 @@ import style from "../../pages/login/Login.module.css";
 export default function LoginComponent() {
   const navigate = useNavigate();
 
-  const {
-    users,
-    setUsers,
-    setLoggedInUser,
-    username,
-    setUsername,
-    password,
-    setPassword,
-  } = useContext(UserContext);
+  const { users, setUsers, setLoggedInUser, username, setUsername, password, setPassword } = useContext(UserContext);
 
   const registerUser = () => {
     if (users.find((u) => u.username === username)) {
@@ -32,15 +24,12 @@ export default function LoginComponent() {
         todos: [],
         events: [],
       };
-
       setUsers([...users, newUser]);
     }
   };
 
   const loginUser = () => {
-    const user = users.find(
-      (u) => u.username === username && u.password === password
-    );
+    const user = users.find((u) => u.username === username && u.password === password);
     if (user == undefined) {
       alert("User not found, please register");
       return;
@@ -49,6 +38,8 @@ export default function LoginComponent() {
       sessionStorage.setItem("justLoggedIn", "true"); //sessionstorage to only show quote on login
       sessionStorage.removeItem("welcomeShown"); // Clear previous welcome
       navigate("/home");
+      setPassword("");
+      setUsername("");
     }
   };
 
