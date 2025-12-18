@@ -1,6 +1,5 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { TodoContext } from "../../../context/todos/TodoContext.jsx";
-import { UserContext } from "../../../context/users/UserContext.jsx";
 import style from "./TodoInput.module.css";
 
 const TodoInput = () => {
@@ -97,6 +96,7 @@ const TodoInput = () => {
             type="date"
             placeholder="Deadline"
             value={deadline}
+            // säkerställa att user ska inte kunna välja tidigare nuvarande datum 
             min={new Date().toISOString().split("T")[0]}
             onChange={(e) => setDeadline(e.target.value)}
             className={style.inputField}
