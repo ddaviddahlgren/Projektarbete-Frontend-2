@@ -11,12 +11,12 @@ nav {
 }
 @font-face {
   font-family: Hasweny;
-  src: url("../../assets/fonts/Hasweny.otf");
+  src: url("../../../assets/fonts/Hasweny.otf");
 }
 
 @font-face {
   font-family: LEMONMILK;
-  src: url("../../assets/fonts/LEMONMILK-Bold.otf");
+  src: url("../../../assets/fonts/LEMONMILK-Bold.otf");
 }
 
 .header {
