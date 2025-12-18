@@ -53,7 +53,7 @@ const Home = () => {
               {topTodos.map((todo) => (
                 <li key={todo.id} className={style.homeLists}>
                   {todo.title} <br/> 
-                  <span id={style.statusText}>Status:</span> {todo.status}
+                  <span id={style.statusText}>Status:</span> Status: {!todo.status ? 'In progress': 'Checked'}
                 </li>
               ))}
             </ul>
