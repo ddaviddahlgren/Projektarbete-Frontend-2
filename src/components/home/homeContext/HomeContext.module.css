@@ -1,0 +1,108 @@
+.homeContainer {
+  width: 300px;
+  height: 500px;
+  background-color: peachpuff;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+@font-face {
+  font-family: Hasweny;
+  src: url("../../assets/fonts/Hasweny.otf");
+}
+
+@font-face {
+  font-family: LEMONMILK;
+  src: url("../../assets/fonts/LEMONMILK-Bold.otf");
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgb(134, 134, 134);
+  color: rgb(222, 145, 135);
+}
+
+.homeTitle {
+  font-family: Hasweny;
+  letter-spacing: 0.3rem;
+  text-align: left;
+  -webkit-text-stroke: 2px rgba(47, 79, 79, 0.281);
+  paint-order: stroke fill;
+  text-shadow: -2px 2px 3px rgb(255, 255, 255);
+
+  margin: 0.8rem 0;
+}
+
+#titleSpan {
+  color: dimgrey;
+  font-size: 2.1rem;
+  font-family: inherit;
+  letter-spacing: 0.6rem;
+  -webkit-text-stroke: 2px rgb(255, 255, 255);
+}
+
+#creditsText {
+  font-family: LEMONMILK;
+  text-align: right;
+  letter-spacing: 0.4rem;
+  margin: 0.8rem 0 0 0;
+  text-shadow: -2px 2px 3px rgb(255, 255, 255);
+}
+
+main {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+  width: 1280;
+  margin: auto;
+}
+
+.componentContainer {
+  padding: 0.5rem auto;
+}
+
+.componentTitle {
+  color: dimgray;
+  font-size: 2rem;
+  font-family: Hasweny;
+  letter-spacing: 0.3rem;
+  margin: 1.5rem auto;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgb(134, 134, 134);
+  text-shadow: -2px 2px 3px rgb(255, 255, 255);
+}
+
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 320px;
+  height: 300px;
+  background-color: rgb(241, 237, 229);
+  padding-left: 1.8rem;
+  padding-right: 1.8rem;
+  border: 2px solid rgb(134, 134, 134);
+  outline: 2px solid rgb(241, 237, 229);
+  box-shadow: -8px 8px 1px rgb(134, 134, 134);
+}
+
+.homeLists {
+  font-family: LEMONMILK;
+  font-size: 1.2rem;
+  line-height: 2.6rem;
+  text-align: left;
+  list-style: none;
+  margin: 0.3rem 0;
+  width: fit-content;
+}
+
+#statusText {
+  font-family: LEMONMILK;
+  border-bottom: 2px solid dimgrey;
+}
