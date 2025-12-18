@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import style from "./BackButton.module.css"
 
 const BackButton=()=>{
 
@@ -11,7 +12,7 @@ const BackButton=()=>{
 
     return(
       <>
-       <button onClick={handleLogout}>Logout</button>
+       <button className={style.logoutBtn} onClick={handleLogout}>Logout</button>
       </>
     );
        
