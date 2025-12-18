@@ -8,6 +8,16 @@
   src: url("../../../assets/fonts/LEMONMILK-Bold.otf");
 }
 
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid rgb(134, 134, 134);
+  color: rgb(222, 145, 135);
+  margin: 4rem auto;
+}
+
 .homeTitle {
   font-family: Hasweny;
   letter-spacing: 0.3rem;
@@ -15,6 +25,93 @@
   -webkit-text-stroke: 2px rgba(47, 79, 79, 0.281);
   paint-order: stroke fill;
   text-shadow: -2px 2px 3px rgb(255, 255, 255);
-
   margin: 0.8rem 0;
 }
+
+.loginTitle {
+  font-family: Hasweny;
+  font-size: 1.1rem;
+  letter-spacing: 0.3rem;
+  -webkit-text-stroke: 2px rgba(47, 79, 79, 0.281);
+  paint-order: stroke fill;
+  text-shadow: -2px 2px 3px rgb(255, 255, 255);
+}
+
+#titleSpan {
+  color: dimgrey;
+  font-size: 2.1rem;
+  font-family: inherit;
+  letter-spacing: 0.6rem;
+  -webkit-text-stroke: 2px rgb(255, 255, 255);
+}
+
+#creditsText {
+  font-family: LEMONMILK;
+  text-align: right;
+  letter-spacing: 0.4rem;
+  margin: 0.8rem 0 0 0;
+  text-shadow: -2px 2px 3px rgb(255, 255, 255);
+}
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 3rem auto;
+  width: 320px;
+  height: fit-content;
+  background-color: rgb(241, 237, 229);
+  padding: 2rem;
+  border: 2px solid rgb(134, 134, 134);
+  outline: 2px solid rgb(241, 237, 229);
+  box-shadow: -8px 8px 1px rgb(134, 134, 134);
+}
+
+.loginInput {
+  font-family: Hasweny;
+  margin: 0.5rem;
+  padding: 0.2rem;
+  background-color: transparent;
+}
+.loginPass {
+  font-family: Hasweny;
+  margin: 0.5rem;
+  padding: 0.2rem;
+  background-color: transparent;
+  border-bottom: 2px solid dimgrey;
+}
+
+.loginBtn {
+  color: dimgrey;
+  font-family: LEMONMILK;
+  width: 100px;
+  margin: 0 auto;
+  padding: 0.2rem;
+  box-shadow: -4px 4px 1px rgb(134, 134, 134);
+  border: 2px solid dimgrey;
+  transition: 0.1s ease;
+}
+
+.loginBtn:hover {
+  color: rgb(222, 145, 135);
+  font-family: LEMONMILK;
+  width: 100px;
+  margin: 0 auto;
+  padding: 0.2rem;
+  box-shadow: -0px 0px 1px rgb(134, 134, 134);
+  border: 2px solid dimgrey;
+  transition: 0.1s ease;
+  
+}
+
+.loginBtnBox {
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid dimgrey;
+  padding-top: 1rem;
+  width: fit-content;
+  margin: auto;
+  gap: 1rem;
+}
+

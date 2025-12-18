@@ -106,3 +106,18 @@ main {
   font-family: LEMONMILK;
   border-bottom: 2px solid dimgrey;
 }
+
+.welcomeText {
+  margin: 1rem auto;
+  color: dimgrey;
+  font-family: LEMONMILK;
+  text-align: left;
+}
+
+footer {
+  width: fit-content;
+  margin: 3rem auto;
+  padding-top: 2rem;
+  border-top: 2px solid dimgrey;
+  align-items: left;
+}
