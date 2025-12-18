@@ -1,5 +1,5 @@
 import { useState } from "react";
-import HomeContext from "../../components/home/homeContext/HomeContext";
+import HomeContext from "../../components/home/homeComponent/HomeComponent";
 import WelcomeHome from "../../components/home/welcomeHome/WelcomeHome";
 
 const Home = () => {

@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../../context/users/UserContext";
 import BackButton from "../BackButton/BackButton";
 import { Link } from "react-router-dom";
-import style from "./HomeContext.module.css";
+import style from "./HomeComponent.module.css";
 import WelcomeHome from "../welcomeHome/WelcomeHome";
 
 const HomeContext =()=>{

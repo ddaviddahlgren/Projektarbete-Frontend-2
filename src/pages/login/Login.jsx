@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { UserContext } from "../../context/users/UserContext";
 import { useNavigate } from "react-router-dom";
+import style from "./Login.module.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -45,7 +46,10 @@ const Login = () => {
 
   return (
     <div>
-      <h2>Login Page</h2>
+      <h1 className={style.homeTitle}>
+                PRODUCTIVITY <span id={style.titleSpan}>ASSISTANT</span>
+              </h1>
+              <p id={style.creditsText}>By Manau, Oscar & David</p>
       <form>
         <input
           type="text"
