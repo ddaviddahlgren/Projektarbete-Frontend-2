@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { TodoContext } from "../../../context/todos/TodoContext";
 import style from "./todoItem.module.css";
 
 const TodoItem = ({ todo }) => {
+
   const {
     editTodoId,
     setEditTodoId,
@@ -24,6 +25,7 @@ const TodoItem = ({ todo }) => {
           todo.status ? style.todoItemCompleted : ""
         }`}
       >
+        {/* Om ärende ID:et matchar, renderar redigering sektion*/}
         {editTodoId === todo.id ? (
           <div className={style.editTodo}>
             <h6 className={style.editHeader}>Edit your todo</h6>
@@ -54,6 +56,7 @@ const TodoItem = ({ todo }) => {
               Save edit
             </button>
             <button
+            // Skickar null-värdet om user inte redigera 
               onClick={() => setEditTodoId(null)}
               className={style.cancelEditButton}
             >
@@ -66,7 +69,7 @@ const TodoItem = ({ todo }) => {
               <input
                 type="checkbox"
                 checked={todo.status}
-                onChange={(e) => handleToggleStatus(todo.id, !todo.status)}
+                onChange={() => handleToggleStatus(todo.id, !todo.status)}
               />
               <p>Status: {!todo.status ? 'In progress': 'Checked'}</p>
             </div>
