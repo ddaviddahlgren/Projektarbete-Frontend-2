@@ -4,11 +4,10 @@ import { UserContext } from "../users/UserContext";
 export const TodoContext = createContext();
 
 export const TodoProvider = ({ children }) => {
+
   const { users, loggedInUser, setUsers } = useContext(UserContext);
 
   const todos = loggedInUser?.todos || [];
-
-  // Test
 
   // State för att spara input värdet
   const [title, setTitle] = useState("");
@@ -34,11 +33,12 @@ export const TodoProvider = ({ children }) => {
     // Huvud filter och sortering funktionen
     const applyFilters = () => {
       
+      // Säkerställa att user är inloggad eller om todo saknas
       if (!loggedInUser || !loggedInUser.todos) {
         setFilteredTodo([]);
         return;
         }
-      let result = loggedInUser.todos; // Börjar alltid med hela den aktuella listan
+      let result = loggedInUser.todos; // skapa en lokal variabel 'result' 
 
       // 1. Filtrera efter kategori
       if (selectedCategories.length > 0) {
@@ -108,7 +108,6 @@ export const TodoProvider = ({ children }) => {
         : user
     );
 
-    // // Spara ny todo i todos-hook
     setUsers(updatedUsers);
 
     // Töm input fältet efter skapar ny todo
@@ -157,14 +156,23 @@ export const TodoProvider = ({ children }) => {
 
   // Spara redigering (Uppdatera)
   const saveEdit = (id) => {
-    const updatedTodo = todos.map((todo) => {
-      if (todo.id === id) {
-        // Skapa nytt todo-objekt med uppdaterade title och description
-        return { ...todo, title: editTitle, description: editDescription };
-      }
-      return todo;
-    });
-    // setTodos(updatedTodo);
+    // setUser uppdatera den globala listan
+    setUsers((prevUsers) =>
+      prevUsers.map((user) =>
+        user.id === loggedInUser.id
+          ? {
+              ...user,
+              todos: user.todos.map((t) =>
+                t.id === id 
+                  ? { ...t, title: editTitle, description: editDescription } 
+                  : t
+              ),
+            }
+          : user
+      )
+    );
+  
+    // setUsers(updatedTodo);
     setEditTodoId(null);
     setEditTitle("");
     setEditDescription("");
@@ -191,7 +199,6 @@ export const TodoProvider = ({ children }) => {
     <TodoContext.Provider
       value={{
         todos,
-        // setTodos,
         title,
         setTitle,
         description,
