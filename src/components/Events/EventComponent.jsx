@@ -18,7 +18,6 @@ const EventComponent = () => {
     setEventDate,
     eventEndDate,
     setEventEndDate,
-    // events, setEvents,
   } = useContext(EventContext);
 
   const addEvent = () => {
@@ -41,14 +40,11 @@ const EventComponent = () => {
       return;
     } else {
       const newEvents = {
-        // userName: loggedInUser.username, //SET NEW EVENT TO LOGGED IN USER SO ONLY THEY CAN SEE THEIR EVENTS
         name: eventName,
         description: description,
         date: eventDate,
         endDate: eventEndDate,
       };
-
-      // setEvents([...events, newEvents]);
 
       const updatedUsers = users.map((user) =>
         user.id === loggedInUser.id ? { ...user, events: [...user.events, newEvents] } : user
