@@ -23,19 +23,20 @@ const Home = () => {
         <h1 className={style.homeTitle}>
           PRODUCTIVITY <span id={style.titleSpan}>ASSISTANT</span>
         </h1>
-        <p id={style.cretisText}>By; Manau, Oscar & David</p>
+        <p id={style.creditsText}>By Manau, Oscar & David</p>
       </header>
       <main className={style.main}>
         <div className={style.componentContainer}>
-        <h3 className={style.componentTitle}>TOP 3 HABITS</h3>
+        <h3 className={style.componentTitle}>HABITS</h3>
         <Link to="/habits">
           <div className={style.homeContainer}>
-            {topHabits.length === 0 && <p>No habits yet</p>}
+            {topHabits.length === 0 && <p className={style.homeLists}>No habits yet</p>}
 
             <ul>
               {topHabits.map((habit) => (
-                <li key={habit.id}>
-                  {habit.title} – {habit.reps} reps
+                <li key={habit.id} className={style.homeLists}>
+                  {habit.title} <br/>
+                  <span id={style.statusText}>Reps:</span> {habit.reps} reps
                 </li>
               ))}
             </ul>
@@ -44,14 +45,15 @@ const Home = () => {
         </div>
         <br />
         <div className={style.componentContainer}>
-        <h3 className={style.componentTitle}>TOP 3 TODOS</h3>
+        <h3 className={style.componentTitle}>TODOS</h3>
         <Link to="/todos">
           <div className={style.homeContainer}>
-            {topTodos.length === 0 && <p>No todos yet</p>}
+            {topTodos.length === 0 && <p className={style.homeLists}>No todos yet</p>}
             <ul>
               {topTodos.map((todo) => (
-                <li key={todo.id}>
-                  {todo.title} - Status: {todo.status}
+                <li key={todo.id} className={style.homeLists}>
+                  {todo.title} <br/> 
+                  <span id={style.statusText}>Status:</span> {todo.status}
                 </li>
               ))}
             </ul>
@@ -60,14 +62,15 @@ const Home = () => {
         </div>
         <br />
         <div className={style.componentContainer}>
-        <h3 className={style.componentTitle}>TOP 3 EVENTS</h3>
+        <h3 className={style.componentTitle}>EVENTS</h3>
         <Link to="/events">
           <div className={style.homeContainer}>
-            {topEvents.length === 0 && <p>No events yet</p>}
+            {topEvents.length === 0 && <p className={style.homeLists}>No events yet</p>}
             <ul>
               {topEvents.map((event) => (
-                <li key={event.id}>
-                  {event.name} - Date: {event.date}
+                <li key={event.id} className={style.homeLists}>
+                  {event.name} <br/>
+                  <span id={style.statusText}>Date:</span> {event.date}
                 </li>
               ))}
             </ul>
