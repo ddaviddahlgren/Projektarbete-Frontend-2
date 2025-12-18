@@ -41,7 +41,66 @@ const HomeContext =()=>{
 
             <BackButton />
             <h2 > Welcome {loggedInUser?.username}!</h2>
-            <nav>
+             <header className={style.header}>
+        <h1 className={style.homeTitle}>
+          PRODUCTIVITY <span id={style.titleSpan}>ASSISTANT</span>
+        </h1>
+        <p id={style.creditsText}>By Manau, Oscar & David</p>
+      </header>
+      <main className={style.main}>
+        <div className={style.componentContainer}>
+        <h3 className={style.componentTitle}>HABITS</h3>
+        <Link to="/habits">
+          <div className={style.homeContainer}>
+            {topHabits.length === 0 && <p className={style.homeLists}>No habits yet</p>}
+
+            <ul>
+              {topHabits.map((habit) => (
+                <li key={habit.id} className={style.homeLists}>
+                  {habit.title} <br/>
+                  <span id={style.statusText}>Reps:</span> {habit.reps} reps
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Link>
+        </div>
+        <br />
+        <div className={style.componentContainer}>
+        <h3 className={style.componentTitle}>TODOS</h3>
+        <Link to="/todos">
+          <div className={style.homeContainer}>
+            {topTodos.length === 0 && <p className={style.homeLists}>No todos yet</p>}
+            <ul>
+              {topTodos.map((todo) => (
+                <li key={todo.id} className={style.homeLists}>
+                  {todo.title} <br/> 
+                  <span id={style.statusText}>Status:</span> {todo.status}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Link>
+        </div>
+        <br />
+        <div className={style.componentContainer}>
+        <h3 className={style.componentTitle}>EVENTS</h3>
+        <Link to="/events">
+          <div className={style.homeContainer}>
+            {topEvents.length === 0 && <p className={style.homeLists}>No events yet</p>}
+            <ul>
+              {topEvents.map((event) => (
+                <li key={event.id} className={style.homeLists}>
+                  {event.name} <br/>
+                  <span id={style.statusText}>Date:</span> {event.date}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Link>
+        </div>
+      </main>
+            {/* <nav>
                 <Link to="/habits">
                 <div className={style.homeContainer}>
                     <h3>TOP 3 HABITS</h3>
@@ -84,7 +143,7 @@ const HomeContext =()=>{
                     </ul>
                     </div>
                 </Link>
-            </nav>
+            </nav> */}
         </div>
     );
 
