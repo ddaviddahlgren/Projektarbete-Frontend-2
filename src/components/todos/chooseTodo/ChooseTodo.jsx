@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { TodoContext } from "../../../context/todos/TodoContext";
 import style from "./chooseTodo.module.css";
 
 const ChooseTodo = () => {
+
   const {
     categories,
     handleFilterCategory,
@@ -12,6 +13,7 @@ const ChooseTodo = () => {
     sortBy,
     setSortBy,
   } = useContext(TodoContext);
+
   return (
     <div>
       <div className={style.chooseCat}>
@@ -21,7 +23,9 @@ const ChooseTodo = () => {
             <button
               key={i}
               onClick={() => handleFilterCategory(category)}
+              // Om kategori är valt, då döp klass namn på "activeCat", annars ingenting
               className={`${style.catButton} ${
+                // Om den andra kategori är vald, då kommer båda kategorier visas
                 selectedCategories.includes(category) ? style.activeCat : " "
               }`}
             >
@@ -30,6 +34,7 @@ const ChooseTodo = () => {
           ))}
         </div>
       </div>
+
       <div className={style.chooseContainer}>
         <h3 className={style.chooseTodoHeader}>SORT BY STATUS</h3>
         <div className={style.sortBySelect}>
@@ -61,6 +66,7 @@ const ChooseTodo = () => {
           </div>
         </div>
       </div>
+
     </div>
   );
 };

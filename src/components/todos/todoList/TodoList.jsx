@@ -4,6 +4,7 @@ import TodoItem from "../todoItem/TodoItem.jsx";
 import style from "./todoList.module.css";
 
 const TodoList = () => {
+  
   const { filteredTodo } = useContext(TodoContext);
 
   return (
