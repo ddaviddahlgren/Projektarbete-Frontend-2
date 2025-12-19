@@ -17,7 +17,9 @@ const HomeContext = () => {
   const topHabits = [...habits].sort((a, b) => b.reps - a.reps).slice(0, 3);
 
   const todos = loggedInUser?.todos || [];
-  const topTodos = [...todos].filter((todo) => todo.status === false).slice(0, 3);
+  const topTodos = [...todos]
+    .filter((todo) => todo.status === false)
+    .slice(0, 3);
 
   const events = loggedInUser?.events || [];
   const topEvents = [...events].slice(0, 3);
@@ -42,11 +44,15 @@ const HomeContext = () => {
       <main className={style.main}>
         <div className={style.componentContainer}>
           <h3 className={style.componentTitle}>HABITS</h3>
+          <h4 className={style.subTitle}>
+            Displayed here are your three most repeated habits
+          </h4>
           <Link to="/habits">
             <div className={style.homeContainer}>
-              {topHabits.length === 0 && <p className={style.homeLists}>No habits yet</p>}
-
               <ul>
+                {topHabits.length === 0 && (
+                  <p className={style.homeLists}>No habits yet</p>
+                )}
                 {topHabits.map((habit) => (
                   <li key={habit.id} className={style.homeLists}>
                     {habit.title} <br />
@@ -60,10 +66,15 @@ const HomeContext = () => {
         <br />
         <div className={style.componentContainer}>
           <h3 className={style.componentTitle}>TODOS</h3>
+          <h4 className={style.subTitle}>
+            Displayed here are your three most recent todos
+          </h4>
           <Link to="/todos">
             <div className={style.homeContainer}>
-              {topTodos.length === 0 && <p className={style.homeLists}>No todos yet</p>}
               <ul>
+                {topTodos.length === 0 && (
+                  <p className={style.homeLists}>No todos yet</p>
+                )}
                 {topTodos.map((todo) => (
                   <li key={todo.id} className={style.homeLists}>
                     {todo.title} <br />
@@ -77,10 +88,15 @@ const HomeContext = () => {
         <br />
         <div className={style.componentContainer}>
           <h3 className={style.componentTitle}>EVENTS</h3>
+          <h4 className={style.subTitle}>
+            Displayed here are your three nearest upcoming events
+          </h4>
           <Link to="/events">
             <div className={style.homeContainer}>
-              {topEvents.length === 0 && <p className={style.homeLists}>No events yet</p>}
               <ul>
+                {topEvents.length === 0 && (
+                  <p className={style.homeLists}>No events yet</p>
+                )}
                 {topEvents.map((event) => (
                   <li key={event.id} className={style.homeLists}>
                     {event.name} <br />

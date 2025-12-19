@@ -40,6 +40,7 @@ export default function Habit({ habit }) {
         />
       ) : (
         <strong
+          className={style.habitTitle}
           onClick={() => setEditing(true)}
           style={{ cursor: "pointer" }}
           title="Click to edit title"
@@ -49,7 +50,7 @@ export default function Habit({ habit }) {
       )}
 
       <div className={style.repsBox}>
-        <p>Repetitions: {habit.reps}</p>
+        <p className={style.repsText}>Repetitions: <br/> {habit.reps}</p>
         <button className={style.repsBtn} onClick={() => subReps(habit.id)}>
           -
         </button>
@@ -61,7 +62,7 @@ export default function Habit({ habit }) {
         </button>
       </div>
       <div className={style.prioBox}>
-        <p>Priority:</p>
+        <p className={style.repsText}>Priority:</p>
         {/* Kolla koden nedan och lär dig */}
         <select
           value={habit.prio}
@@ -79,7 +80,12 @@ export default function Habit({ habit }) {
           }
         ></div>
       </div>
-      <button onClick={() => handleDeleteHabit(habit.id)}>Remove Habit</button>
+      <button
+        className={style.removeBtn}
+        onClick={() => handleDeleteHabit(habit.id)}
+      >
+        Remove Habit
+      </button>
     </>
   );
 }

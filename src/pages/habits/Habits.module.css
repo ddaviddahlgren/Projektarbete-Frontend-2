@@ -1,93 +1,239 @@
 ul {
-    padding: 0;
+  padding: 0;
 }
 
-.habitsList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    list-style: none;
-    padding: auto 0;
-    margin: 1rem auto;
-    width: 1040px;
-    gap: 1rem;
+.componentHeader {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(134, 134, 134);
 }
 
-.habit {
-    display: flex;
-    flex-direction: column;
-    width: 280px;
-    margin: 0.1rem 0.5rem;
-    padding: 2rem auto;
-    background-color: rgb(213, 240, 240);
-    border-radius: 0.1rem;
-    box-shadow: -4px 4px 1px rgb(218, 231, 231);
-    border: 2px solid white;
+.componentTitle {
+  color: rgb(222, 145, 135);
+  font-size: 2.2rem;
+  font-family: Hasweny;
+  letter-spacing: 0.3rem;
+  text-align: left;
+  margin: 1rem 0;
+  text-shadow: -2px 2px 3px rgb(255, 255, 255);
 }
 
-strong {
-    text-decoration: underline;
+
+.filterContainer {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  margin: 1rem auto;
 }
 
-.repsBox, .prioBox {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    margin: 0 auto;
-    padding: 0.5rem 1rem;
-    gap: 1rem;
+.addEvent {
+  width: fit-content;
+  margin: 1rem auto;
+  padding: 0.4rem 1rem 1rem 1rem;
+  border: 2px solid rgba(105, 105, 105, 0.11);
+  box-shadow: -4px 4px 1px rgba(105, 105, 105, 0.11);
+  outline: 2px solid rgb(241, 237, 229);
 }
 
-.repsBtn, #prioBtn{
-    height: fit-content;
-    background-color: blanchedalmond;
-    border: none;
-    padding: 4px 8px;
-    margin: 0 0.2rem;
-    border-radius: 0.1rem;
-    box-shadow: -2px 2px 1px rgb(60, 80, 80);
-    cursor: pointer;
-    transition: 0.2s ease;
-
+.subTitle {
+  color: dimgrey;
+  font-family: Hasweny;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.6rem;
+  text-align: center;
+  width: 400px;
+  margin: 1.5rem auto;
+  padding: 0.6rem 0.3rem;
+  border: 2px solid rgba(105, 105, 105, 0.11);
+  box-shadow: -4px 4px 1px rgba(105, 105, 105, 0.11);
 }
 
-.repsBtn:hover {
-    color: rgb(255, 255, 255);
-    background-color: rgb(55, 66, 66);
-    box-shadow: -2px 2px 1px blanchedalmond;
-    transition: 0.2s ease;
+.logoutBtn,
+.removeBtn,
+.addBtn, 
+.editBtn {
+  font-size: 0.6rem;
+  color: dimgrey;
+  font-family: LEMONMILK;
+  width: fit-content;
+  margin: 1rem auto;
+  padding: 0.4rem;
+  box-shadow: -4px 4px 1px rgb(134, 134, 134);
+  border: 2px solid dimgrey;
+  transition: 0.1s ease;
+}
+
+.addBtn {
+  margin: 0;
+}
+
+.editBtn {
+  margin-right: 0.8rem;
+}
+
+.repsBtn,
+#prioBtn {
+  font-size: 0.6rem;
+  color: dimgrey;
+  font-family: LEMONMILK;
+  width: fit-content;
+  margin: 0 0.2rem;
+  padding: 0.4rem 0.6rem;
+  border: 2px solid dimgrey;
+  transition: 0.1s ease;
+}
+
+.repsBtn:hover,
+#prioBtn:hover,
+.addBtn:hover {
+  color: goldenrod;
 }
 
 #prioBtn.active {
-    color: rgb(255, 255, 255);
-    background-color: rgb(73, 87, 87);
-    box-shadow: 2px -3px 1px rgb(206, 199, 189);
-    transition: 0.2s ease;  
+  color: goldenrod;
+}
+
+.logoutBtn:hover,
+.removeBtn:hover,
+.editBtn:hover {
+  color: rgb(222, 145, 135);
+  box-shadow: -0px 0px 1px rgb(134, 134, 134);
+  transition: 0.1s ease;
+}
+
+.habitsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: auto 0;
+  margin: 1rem auto;
+  width: 1040px;
+  gap: 1rem;
+}
+
+.habit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 280px;
+  margin: 1.2rem auto;
+  background-color: rgb(241, 237, 229);
+  padding: 0.5rem 0.5rem;
+  border: 2px solid rgb(134, 134, 134);
+  outline: 2px solid rgb(241, 237, 229);
+  box-shadow: -8px 8px 1px rgb(134, 134, 134);
+}
+
+#eventCard {
+  display: flex;
+  flex-direction: column;
+  padding: 0.2rem;
+}
+
+.repsText {
+  font-family: Hasweny;
+  line-height: 1.2rem;
+  margin: 0.8rem 0;
+}
+
+.eventText {
+  font-family: Hasweny;
+  line-height: 1.2rem;
+  margin: 0.6rem 0;
+}
+
+.repsBox,
+.prioBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 1rem;
+}
+
+.habitTitle, .eventTitle {
+  font-family: Hasweny;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.6rem;
+  max-width: 600px;
+  text-align: left;
+  margin: 0.3rem auto;
+  padding: 0.3rem 0.6rem 0.3rem 0.6rem;
+  border-bottom: 1px solid rgba(105, 105, 105, 0.11);
+}
+
+.eventTitle {
+  border: none;
+  margin: 1rem auto;
 }
 
 .lowPrio {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: lightblue;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgb(202, 218, 238);
+  filter: blur(1px);
+  margin-right: 0.5rem;
 }
 
 .medPrio {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: burlywood;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: goldenrod;
+  filter: blur(1px);
+  margin-right: 0.5rem;
 }
 
 .hiPrio {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background-color: rgb(34, 255, 45);
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: yellowgreen;
+  filter: blur(1px);
+  margin-right: 0.5rem;
 }
 
 p {
-    margin: 1rem auto;
+  margin: 1rem auto;
 }
- 
+
+select,
+option,
+.habitInput,
+.eventInput {
+  border: 2px solid dimgrey;
+  background-color: transparent;
+  padding: 0.2rem;
+  font-family: Hasweny;
+}
+
+.eventInput {
+  margin-bottom: 0.5rem;
+}
+
+.addForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+footer {
+  padding: 0;
+  margin: 1rem auto;
+}
+
+.btnBox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* gap: 1rem; */
+}

@@ -5,6 +5,7 @@ import FilterEvent from "./FilterEvents";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/users/UserContext";
+import style from "../../pages/habits/Habits.module.css"
 
 const EventComponent = () => {
   const { users, setUsers, loggedInUser } = useContext(UserContext);
@@ -26,7 +27,12 @@ const EventComponent = () => {
     const today = new Date();
     today.setHours(0, 0, 0, 0); //need this to be able to set events for today
 
-    if (eventName === "" || description === "" || eventDate === "" || eventEndDate === "") {
+    if (
+      eventName === "" ||
+      description === "" ||
+      eventDate === "" ||
+      eventEndDate === ""
+    ) {
       // checking if you filled all fields and selected valid dates
       alert("Please fill in all fields");
       return;
@@ -48,7 +54,9 @@ const EventComponent = () => {
       };
 
       const updatedUsers = users.map((user) =>
-        user.id === loggedInUser.id ? { ...user, events: [...user.events, newEvents] } : user
+        user.id === loggedInUser.id
+          ? { ...user, events: [...user.events, newEvents] }
+          : user
       );
       setUsers(updatedUsers);
 
@@ -62,16 +70,12 @@ const EventComponent = () => {
 
   return (
     <>
-      <Link to="/home">
-        <button>Home</button>
-      </Link>
-      <br />
-      <p>Events Page</p>
-      <EventInputs addEvent={addEvent} /> {/* component with all the event inputs*/}
+      <h2 className={style.subTitle}>These are your current events</h2>
       <div>
-        <h3>Event List</h3>
         <FilterEvent /> {/* //filtering and sorting events by date*/}
       </div>
+      <EventInputs addEvent={addEvent} />{" "}
+      {/* component with all the event inputs*/}
     </>
   );
 };

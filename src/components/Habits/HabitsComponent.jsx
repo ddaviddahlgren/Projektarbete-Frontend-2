@@ -37,9 +37,7 @@ export default function HabitsComponent() {
 
   return (
     <>
-      <h2>These are your current habits:</h2>
-      <FilterSection />
-      <SortSection />
+      <h2 className={style.subTitle}>These are your current habits</h2>
       <ul className={style.habitsList}>
         {displayedHabits.map((habit) => (
           <li className={style.habit} key={habit.id}>
@@ -48,19 +46,25 @@ export default function HabitsComponent() {
         ))}
       </ul>
       <form
+        className={style.addForm}
         onSubmit={(e) => {
           e.preventDefault();
           handleNewHabit();
         }}
       >
-        <label>Add new habit: </label>
+        <label className={style.repsText}>Add new habit: </label>
         <input
+        className={style.habitInput}
           type="text"
           value={habitTitle}
           onChange={(e) => setHabitTitle(e.target.value)}
         />
-        <button type="submit">Click to add</button>
+        <button className={style.removeBtn} type="submit">Click to add</button>
       </form>
+      <footer>
+        <FilterSection />
+        <SortSection />
+      </footer>
     </>
   );
 }

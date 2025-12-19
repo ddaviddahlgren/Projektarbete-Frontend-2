@@ -68,18 +68,12 @@
   box-shadow: -8px 8px 1px rgb(134, 134, 134);
 }
 
-.loginInput {
+.loginInput, .loginPass {
   font-family: Hasweny;
   margin: 0.5rem;
-  padding: 0.2rem;
+  padding: 0.3rem;
   background-color: transparent;
-}
-.loginPass {
-  font-family: Hasweny;
-  margin: 0.5rem;
-  padding: 0.2rem;
-  background-color: transparent;
-  border-bottom: 2px solid dimgrey;
+  border: 2px solid rgb(105, 105, 105);
 }
 
 .loginBtn {

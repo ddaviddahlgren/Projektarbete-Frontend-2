@@ -3,9 +3,15 @@
   margin: 0 auto;
   padding: 1rem;
   text-align: center;
+  user-select: none;
 }
 
 a, a:link, a:visited {
   color: dimgray;
   text-decoration: none;
 }
+
+button {
+  cursor: pointer;
+}
+

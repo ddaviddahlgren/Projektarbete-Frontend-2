@@ -1,60 +1,63 @@
 import { useContext } from "react";
 import { EventContext } from "../../context/EventContext";
 import { UserContext } from "../../context/users/UserContext";
-UserContext;
+import style from "../../pages/habits/Habits.module.css";
 const EventCard = ({ event, index }) => {
   const { users, setUsers, loggedInUser } = useContext(UserContext);
   const { setEditingIndex, setEditing } = useContext(EventContext);
 
   const editEvent = (index) => {
     setEditingIndex(index);
-    const currentUser = users.find((user) => user.username === loggedInUser.username);
+    const currentUser = users.find(
+      (user) => user.username === loggedInUser.username
+    );
     setEditing(currentUser.events[index]); //sets the editing state to the event being edited
   };
 
   const deleteEvent = (index) => {
     const updatedUsers = users.map((user) =>
-      user.id === loggedInUser.id ? { ...user, events: user.events.filter((e, i) => i !== index) } : user
+      user.id === loggedInUser.id
+        ? { ...user, events: user.events.filter((e, i) => i !== index) }
+        : user
     );
     setUsers(updatedUsers);
   };
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0); //need this to be able to set events for today
-  const expired = new Date(event.date) < today;
-
   return (
-    <div className="eventCard">
-      <div
-        style={{
-          backgroundColor: expired ? "red" : "lightgreen",
-          padding: "10px",
-          width: 200,
-        }}
-      >
-        {" "}
-        {/* checking if event has expired and setting a new color */}
-        <h4>
-          Event Name: <br /> {event.name}
-        </h4>
-        <p>
-          <strong>Description: </strong>
-          <br />
+    <div
+      id="eventCard"
+      style={{
+        padding: "10px",
+        width: 210,
+      }}
+    >
+      {" "}
+      {/* checking if event has expired and setting a new color */}
+      <strong className={style.eventTitle}>
+        {event.name}
+      </strong>
+      <p>
+        <strong className={style.eventTitle}>
+     
           {event.description}
-        </p>
-        <p>
-          <strong>Date: </strong>
+        </strong>
+      </p>
+      <p>
+        <strong className={style.eventTitle}>
+          Date
           <br />
           {event.date}
-        </p>
-        <p>
-          <strong>EndDate: </strong>
+        </strong>
+      </p>
+      <p>
+        <strong className={style.eventTitle}>
+          EndDate
           <br />
           {event.endDate}
-        </p>
-        <button onClick={() => editEvent(index)}>Edit Event</button>
-        <button onClick={() => deleteEvent(index)}>Delete Event</button>
-      </div>
+        </strong>
+      </p>
+      <button className={style.editBtn} onClick={() => editEvent(index)}>Edit Event</button>
+      <button className={style.removeBtn}onClick={() => deleteEvent(index)}>Delete Event</button>
     </div>
   );
 };

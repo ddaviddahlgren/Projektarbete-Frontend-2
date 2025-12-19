@@ -13,34 +13,38 @@ export default function SortSection() {
 
   return (
     <>
-      <h4>Sortera efter antal repetitioner</h4>
-      <button
-        id={style.prioBtn}
-        className={!sortBy ? style.active : ""}
-        onClick={() => {
-          setSortBy(null);
-          setSortOrder("asc");
-        }}
-      >
-        Standard
-      </button>
+      <h4 className={style.subTitle}>Sort by repetitions</h4>
+      <div className={style.btnBox}>
+        <button
+          id={style.prioBtn}
+          className={!sortBy ? style.active : ""}
+          onClick={() => {
+            setSortBy(null);
+            setSortOrder("asc");
+          }}
+        >
+          Standard
+        </button>
 
-      <button
-        id={style.prioBtn}
-        className={
-          sortBy === "reps" && sortOrder === "desc" ? style.active : ""
-        }
-        onClick={() => handleSort("reps", "desc")}
-      >
-        Flest
-      </button>
-      <button
-        id={style.prioBtn}
-        className={sortBy === "reps" && sortOrder === "asc" ? style.active : ""}
-        onClick={() => handleSort("reps", "asc")}
-      >
-        Minst
-      </button>
+        <button
+          id={style.prioBtn}
+          className={
+            sortBy === "reps" && sortOrder === "desc" ? style.active : ""
+          }
+          onClick={() => handleSort("reps", "desc")}
+        >
+          Flest
+        </button>
+        <button
+          id={style.prioBtn}
+          className={
+            sortBy === "reps" && sortOrder === "asc" ? style.active : ""
+          }
+          onClick={() => handleSort("reps", "asc")}
+        >
+          Minst
+        </button>
+      </div>
     </>
   );
 }

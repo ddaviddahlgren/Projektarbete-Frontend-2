@@ -27,15 +27,16 @@ const WelcomeHome = ({ onComplete }) => {
 
   return (
     <div className={`${style.quoteScreen}`}>
+      <h3 className={style.quoteHeader}>Todays quote:</h3>
       {data ? <p className={style.quoteText}>"{data.quote}"</p> : <p className={style.quoteText}>Loading</p>}
 
-      <button
+      <button className={style.loginBtn}
         onClick={() => {
           console.log("clicked");
           onComplete();
         }}
       >
-        close
+        continue
       </button>
     </div>
   );
