@@ -51,7 +51,7 @@ ul {
   box-shadow: -4px 4px 1px rgba(105, 105, 105, 0.11);
 }
 
-.logoutBtn,
+
 .removeBtn,
 .addBtn, 
 .editBtn {
@@ -66,6 +66,17 @@ ul {
   transition: 0.1s ease;
 }
 
+.logoutBtn {
+  font-size: 0.6rem;
+  color: dimgrey;
+  font-family: LEMONMILK;
+  width: fit-content;
+  margin: 2rem auto;
+  padding: 0.4rem;
+  box-shadow: -4px 4px 1px rgb(134, 134, 134);
+  border: 2px solid dimgrey;
+  transition: 0.1s ease;
+}
 .addBtn {
   margin: 0;
 }
@@ -227,7 +238,8 @@ option,
 }
 
 footer {
-  padding: 0;
+  border-top: none;
+  padding: 2rem;
   margin: 1rem auto;
 }
 
