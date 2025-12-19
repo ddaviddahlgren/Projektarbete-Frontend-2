@@ -20,7 +20,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #12279e 0%, #183678 100%);
+  background: transparent;
   border-radius: 1rem;
   color: white;
   display: grid;

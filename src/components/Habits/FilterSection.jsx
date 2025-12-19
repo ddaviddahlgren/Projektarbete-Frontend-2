@@ -7,7 +7,7 @@ export default function FilterSection() {
 
   return (
     <>
-      <h4 className={style.subTitle}>Sort by priority</h4>
+      <h4 className={style.subTitle}>Filter by priority</h4>
       <div className={style.btnBox}>
         <button
           id={style.prioBtn}

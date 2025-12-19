@@ -39,15 +39,8 @@ const FilterEvent = () => {
 
   return (
     <>
-      <select
-        value={filterType}
-        onChange={(e) => setFilterType(e.target.value)}
-      >
-        <option value="Default">All Events</option>
-        <option value="Expired">Expired Events</option>
-        <option value="Active">Active Events</option>
-      </select>
-      <div className={style.filterContainer}>
+      
+     
         {getFilteredEvents()
           // .sort((a,b) => new Date(a.date) - new Date(b.date))
           .map((event, index) => (
@@ -83,7 +76,7 @@ const FilterEvent = () => {
               )}
             </div>
           ))}
-      </div>
+      
     </>
   );
 };

@@ -1,9 +1,8 @@
 import { useContext } from "react";
 import { TodoContext } from "../../../context/todos/TodoContext.jsx";
-import style from "./TodoInput.module.css";
+import style from "../../../pages/habits/Habits.module.css";
 
 const TodoInput = () => {
-
   const {
     title,
     setTitle,
@@ -22,91 +21,68 @@ const TodoInput = () => {
   } = useContext(TodoContext);
 
   return (
-    <div className={style.container}>
-      <h3 className={style.todoInputHeader}>Create your todo</h3>
-      <div className={style.inputContiner}>
-        <label>
-          Title:{" "}
+    <>
+      <div className={style.addTodo}>
+        <h3 className={style.eventText}>Create your todo</h3>
+
+        <input
+          placeholder="Todo"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className={style.todoInput}
+        />
+
+        <textarea
+          placeholder="Add note"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className={style.todoInput}
+        />
+
+        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+          <option>Select category</option>
+          {categories.map((category) => (
+            <option key={category}>{category}</option>
+          ))}
+        </select>
+        <div className={style.timeBox}>
+          <label className={style.todoText}>Time</label>
           <input
-            placeholder="Todo"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className={style.inputField}
+            type="number"
+            placeholder="00"
+            value={hours}
+            min="0"
+            onChange={(e) => setHours(e.target.value)}
+            className={style.timeField}
           />
-        </label>
-
-        <label>
-          Desciption:{" "}
-          <textarea
-            placeholder="Add note"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className={style.inputField}
+          <span className={style.todoText}> hr </span>
+          <input
+            type="number"
+            placeholder="00"
+            value={minutes}
+            min="0"
+            max="59"
+            onChange={(e) => setMinutes(e.target.value)}
+            className={style.timeField}
           />
-        </label>
-
-        <div className={style.selectedContainer}>
-          <div className={category}>
-            <label>
-              Category:{" "}
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className={style.todoInputSelect}
-              >
-                <option>Select category</option>
-                {categories.map((category) => (
-                  <option key={category} className={style.todoInputOption}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </div>
-
-          <div className={style.time}>
-            <label>
-              Time:{" "}
-              <input
-                type="number"
-                placeholder="Hours"
-                value={hours}
-                min="0"
-                onChange={(e) => setHours(e.target.value)}
-                className={style.inputField}
-              />
-              <span> hr </span>
-              <input
-                type="number"
-                placeholder="Minutes"
-                value={minutes}
-                min="0"
-                max="59"
-                onChange={(e) => setMinutes(e.target.value)}
-                className={style.inputField}
-              />
-              <span> min</span>
-            </label>
-          </div>
+          <span className={style.todoText}> min</span>
         </div>
 
-        <label>
-          Deadline:
-          <input
-            type="date"
-            placeholder="Deadline"
-            value={deadline}
-            // säkerställa att user ska inte kunna välja tidigare nuvarande datum 
-            min={new Date().toISOString().split("T")[0]}
-            onChange={(e) => setDeadline(e.target.value)}
-            className={style.inputField}
-          />
-        </label>
-        <button onClick={handleAddTodo} className={style.saveButton}>
-          Save new todo
+        <label className={style.todoText}>Deadline</label>
+        <input
+          type="date"
+          placeholder="Deadline"
+          value={deadline}
+          // säkerställa att user ska inte kunna välja tidigare nuvarande datum
+          min={new Date().toISOString().split("T")[0]}
+          onChange={(e) => setDeadline(e.target.value)}
+          className={style.todoInput}
+        />
+        <button onClick={handleAddTodo} className={style.addBtn}>
+          add todo
         </button>
       </div>
-    </div>
+    </>
   );
 };
 export default TodoInput;

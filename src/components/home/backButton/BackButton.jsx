@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import style from "./BackButton.module.css"
+import style from "../homeComponent/HomeComponent.module.css"
 
 const BackButton=()=>{
 

@@ -19,6 +19,8 @@ const EventComponent = () => {
     setEventDate,
     eventEndDate,
     setEventEndDate,
+    filterType, 
+    setFilterType
   } = useContext(EventContext);
 
   const addEvent = () => {
@@ -71,11 +73,22 @@ const EventComponent = () => {
   return (
     <>
       <h2 className={style.subTitle}>These are your current events</h2>
-      <div>
+      <main className={style.eventMain}>
         <FilterEvent /> {/* //filtering and sorting events by date*/}
-      </div>
       <EventInputs addEvent={addEvent} />{" "}
       {/* component with all the event inputs*/}
+      </main>
+      <footer>
+        <h2 className={style.subTitle}>Filter events</h2>
+      <select
+        value={filterType}
+        onChange={(e) => setFilterType(e.target.value)}
+      >
+        <option value="Default">All Events</option>
+        <option value="Expired">Expired Events</option>
+        <option value="Active">Active Events</option>
+      </select>
+      </footer>
     </>
   );
 };

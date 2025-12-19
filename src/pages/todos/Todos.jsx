@@ -1,25 +1,25 @@
 import ChooseTodo from "../../components/todos/chooseTodo/ChooseTodo.jsx";
 import TodoInput from "../../components/todos/todoInput/TodoInput.jsx";
 import TodoList from "../../components/todos/todoList/TodoList.jsx";
-import style from "./Todos.module.css";
+import style from "../habits/Habits.module.css";
+
 import { Link } from "react-router-dom";
 
 const Todos = () => {
   return (
     <>
-      <div>
-        <h2 className={style.todoPageHeader}>Todo Page</h2>
-        <div className={style.backHome}>
-          <Link to="/home" className={style.backHomeLink}>
-            ⬅️ BACK TO HOME
-          </Link>
-        </div>
-        <div className={style.todoPage}>
-          <TodoInput />
-          <ChooseTodo />
-        </div>
+      <header className={style.componentHeader}>
+        <h1 className={style.componentTitle}>TODOS</h1>
+        <Link to="/home">
+          <button className={style.backBtn}>Back to Home Page</button>
+        </Link>
+      </header>
+      <h2 className={style.subTitle}>These are your current todo's</h2>
+      <main className={style.todoMain}>
         <TodoList />
-      </div>
+        <TodoInput />
+      </main>
+      <ChooseTodo />
     </>
   );
 };

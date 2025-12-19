@@ -59,7 +59,7 @@ export default function HabitsComponent() {
           value={habitTitle}
           onChange={(e) => setHabitTitle(e.target.value)}
         />
-        <button className={style.removeBtn} type="submit">Click to add</button>
+        <button className={style.addBtn} type="submit">Click to add</button>
       </form>
       <footer>
         <FilterSection />
