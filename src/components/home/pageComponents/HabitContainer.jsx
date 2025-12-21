@@ -24,7 +24,7 @@ export default function HabitContainer() {
               {topHabits.map((habit) => (
                 <li key={habit.id} className={style.homeLists}>
                   {habit.title} <br />
-                  <span id={style.statusText}>Reps:</span> {habit.reps} reps
+                  <span id={style.statusText}>{habit.reps} reps, {habit.prio} prio</span>
                 </li>
               ))}
             </ul>

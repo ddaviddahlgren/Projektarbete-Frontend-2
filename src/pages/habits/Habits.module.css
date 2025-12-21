@@ -32,7 +32,7 @@ ul {
 
 .addEvent {
   width: fit-content;
-  margin: 1rem 0.5rem;
+  margin: 0rem 0.5rem;
   padding: 0.4rem 1rem 1rem 1rem;
   border: 2px solid rgba(105, 105, 105, 0.11);
   box-shadow: -4px 4px 1px rgba(105, 105, 105, 0.11);
@@ -179,6 +179,10 @@ ul {
   box-shadow: -8px 8px 1px rgb(134, 134, 134);
 }
 
+.eventContainer {
+  height: fit-content;
+}
+
 #eventCard {
   display: flex;
   flex-direction: column;
@@ -237,7 +241,7 @@ ul {
 .eventTitle,
 .todoTitle {
   font-family: Hasweny;
-  font-size: 1rem;
+  font-size: 0.9rem;
   letter-spacing: 0.1rem;
   line-height: 1.6rem;
   max-width: 600px;

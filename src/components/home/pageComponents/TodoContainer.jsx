@@ -21,12 +21,13 @@ export default function TodoContainer() {
           <div className={style.homeContainer}>
             <ul>
               {topTodos.length === 0 && (
-                <p className={style.homeLists}>No todos yet</p>
+                <p className={style.homeLists}>No todos yet <br/>
+                <span id={style.statusText}>CLICK THE BOX TO START</span></p>
               )}
               {topTodos.map((todo) => (
                 <li key={todo.id} className={style.homeLists}>
                   {todo.title} <br />
-                  <span id={style.statusText}>Status:</span> {todo.status}
+                  <span id={style.statusText}>Status: {todo.status === false ? "Not completed" : "Completed"}</span>
                 </li>
               ))}
             </ul>

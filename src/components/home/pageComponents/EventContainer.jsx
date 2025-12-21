@@ -25,7 +25,7 @@ export default function EventContainer() {
               {topEvents.map((event) => (
                 <li key={event.id} className={style.homeLists}>
                   {event.name} <br />
-                  <span id={style.statusText}>Date:</span> {event.date}
+                  <span id={style.statusText}>Date: {event.date}</span>
                 </li>
               ))}
             </ul>
