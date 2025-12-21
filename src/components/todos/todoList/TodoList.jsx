@@ -9,12 +9,12 @@ const TodoList = () => {
 
   return (
     <>
-      <div className={style.todoContainer}>
+   
         {/* Mappar genom filteredTodo, de ärende som är redan filtrerat och sorterat */}
         {filteredTodo.map((todo) => (
           <TodoItem key={todo.id} todo={todo} />
         ))}
-      </div>
+     
     </>
   );
 };
