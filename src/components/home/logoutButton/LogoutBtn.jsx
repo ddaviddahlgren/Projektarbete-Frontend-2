@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom"
-import style from "../homeComponent/HomeComponent.module.css"
+import style from "./LogoutBtn.module.css"
 
-const BackButton=()=>{
+const LogoutButton=()=>{
 
   const handleLogout=()=>{
     sessionStorage.clear();
@@ -18,4 +18,4 @@ const BackButton=()=>{
        
 }
 
-export default BackButton
+export default LogoutButton
