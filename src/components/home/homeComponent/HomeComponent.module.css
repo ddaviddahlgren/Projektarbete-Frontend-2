@@ -143,20 +143,20 @@ main {
 
 .welcomeText {
   width: fit-content;
-  margin: 0.5rem 0;
-  padding: 0.2rem 0.4rem;
-  color: dimgrey;
-  font-family: LEMONMILK;
+  margin: 1rem 0;
+  padding: 0.4rem 0.6rem;
+  color: rgb(141, 141, 141);
+  font-family: Hasweny;
   text-align: left;
+  letter-spacing: 0.6rem;
   border: 2px solid rgba(105, 105, 105, 0.233);
-  box-shadow: -4px 4px 1px rgb(134, 134, 134);
+  box-shadow: -4px 4px 1px rgba(134, 134, 134, 0.541);
 }
 
 footer {
   width: fit-content;
-  margin: 3rem auto;
-  padding-top: 2rem;
-  border-top: 2px solid rgba(105, 105, 105, 0.11);
+  margin: 2.6rem auto;
+  border-top: 2px solid rgba(105, 105, 105, 0.253);
   align-items: left;
 }
 

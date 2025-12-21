@@ -31,7 +31,7 @@ const WelcomeHome = ({ onComplete }) => {
       {data ? <p className={style.quoteText}>"{data.quote}" <br/> <span id={style.authorText}>~ {data.author}</span></p> : <p className={style.quoteText}>Loading</p>}
 
 
-      <button className={style.loginBtn}
+      <button className={style.contBtn}
         onClick={() => {
           console.log("clicked");
           onComplete();

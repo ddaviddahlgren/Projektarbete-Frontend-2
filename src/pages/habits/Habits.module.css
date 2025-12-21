@@ -93,7 +93,7 @@ ul {
 }
 
 .repsBtn,
-#prioBtn, #todoFilterBtn {
+.prioBtn, .todoFilterBtn {
   font-size: 0.6rem;
   color: dimgrey;
   font-family: LEMONMILK;
@@ -105,14 +105,14 @@ ul {
 }
 
 .repsBtn:hover,
-#prioBtn:hover,
+.prioBtn:hover,
 .addBtn:hover {
   color: goldenrod;
   box-shadow: none;
 }
 
-#prioBtn.active,
-#todoFilterBtn {
+.prioBtn.active,
+.todoFilterBtn.active {
   color: goldenrod;
   background-color: rgb(235, 232, 221);
 }
@@ -319,12 +319,6 @@ option,
   gap: 1rem;
   width: fit-content;
   margin: 0 auto;
-}
-
-footer {
-  border-top: none;
-  margin: 1rem auto;
-  padding: 0;
 }
 
 .btnBox {

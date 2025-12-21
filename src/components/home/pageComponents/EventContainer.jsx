@@ -20,7 +20,8 @@ export default function EventContainer() {
           <div className={style.homeContainer}>
             <ul>
               {topEvents.length === 0 && (
-                <p className={style.homeLists}>No events yet</p>
+                <p className={style.homeLists}>No events yet<br/>
+                <span id={style.statusText}>CLICK THE BOX TO START</span></p>
               )}
               {topEvents.map((event) => (
                 <li key={event.id} className={style.homeLists}>

@@ -32,6 +32,8 @@
 }
 
 .quoteHeader {
+  position: fixed;
+  top: 22%;
   color: dimgrey;
   font-family: Hasweny;
   font-size: 2.4rem;
@@ -65,9 +67,9 @@
   color: #666;
 }
 
-.loginBtn {
+.contBtn {
   position: fixed;
-  bottom: 20%;
+  bottom: 22%;
   color: dimgrey;
   font-family: LEMONMILK;
   width: 100px;
@@ -78,7 +80,7 @@
   transition: 0.1s ease;
 }
 
-.loginBtn:hover {
+.contBtn:hover {
   color: rgb(222, 145, 135);
   font-family: LEMONMILK;
   width: 100px;

@@ -5,6 +5,7 @@ import style from "../../../pages/habits/Habits.module.css";
 const ChooseTodo = () => {
   const {
     categories,
+    selectedCategories,
     handleFilterCategory,
     filterStatus,
     setFilterStatus,
@@ -18,10 +19,11 @@ const ChooseTodo = () => {
       <div className={style.catBtnContainer}>
         {categories.map((category, i) => (
           <button
-            id={style.todoFilterBtn}
             key={i}
             onClick={() => handleFilterCategory(category)}
-            // Om kategori är valt, då döp klass namn på "activeCat", annars ingenting
+            className={`${style.todoFilterBtn} ${
+              selectedCategories.includes(category) ? style.active : " "
+            }`}
           >
             {category}
           </button>

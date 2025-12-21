@@ -16,8 +16,7 @@ export default function SortSection() {
       <h4 className={style.subTitle}>Sort by repetitions</h4>
       <div className={style.btnBox}>
         <button
-          id={style.prioBtn}
-          className={!sortBy ? style.active : ""}
+          className={`${style.prioBtn} ${!sortBy ? style.active : ""}`}
           onClick={() => {
             setSortBy(null);
             setSortOrder("asc");
@@ -27,19 +26,17 @@ export default function SortSection() {
         </button>
 
         <button
-          id={style.prioBtn}
-          className={
+          className={`${style.prioBtn} ${
             sortBy === "reps" && sortOrder === "desc" ? style.active : ""
-          }
+          }`}
           onClick={() => handleSort("reps", "desc")}
         >
           Flest
         </button>
         <button
-          id={style.prioBtn}
-          className={
+           className={`${style.prioBtn} ${
             sortBy === "reps" && sortOrder === "asc" ? style.active : ""
-          }
+          }`}
           onClick={() => handleSort("reps", "asc")}
         >
           Minst

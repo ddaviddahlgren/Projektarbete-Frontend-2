@@ -19,7 +19,8 @@ export default function HabitContainer() {
           <div className={style.homeContainer}>
             <ul>
               {topHabits.length === 0 && (
-                <p className={style.homeLists}>No habits yet</p>
+                <p className={style.homeLists}>No habits yet<br/>
+                <span id={style.statusText}>CLICK THE BOX TO START</span></p>
               )}
               {topHabits.map((habit) => (
                 <li key={habit.id} className={style.homeLists}>
