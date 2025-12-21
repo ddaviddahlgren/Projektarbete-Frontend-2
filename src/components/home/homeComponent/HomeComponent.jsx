@@ -19,7 +19,6 @@ const HomeContext = () => {
   return (
     <div>
       {showWelcome && <WelcomeHome onComplete={handleWelcomeComplete} />}
-
       <Header />
       <Main />
       <footer>

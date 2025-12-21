@@ -93,7 +93,7 @@ ul {
 }
 
 .repsBtn,
-#prioBtn {
+#prioBtn, #todoFilterBtn {
   font-size: 0.6rem;
   color: dimgrey;
   font-family: LEMONMILK;
@@ -111,7 +111,8 @@ ul {
   box-shadow: none;
 }
 
-#prioBtn.active {
+#prioBtn.active,
+#todoFilterBtn {
   color: goldenrod;
   background-color: rgb(235, 232, 221);
 }

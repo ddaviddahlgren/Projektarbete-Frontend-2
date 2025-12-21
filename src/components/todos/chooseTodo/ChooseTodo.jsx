@@ -6,7 +6,6 @@ const ChooseTodo = () => {
   const {
     categories,
     handleFilterCategory,
-    selectedCategories,
     filterStatus,
     setFilterStatus,
     sortBy,
@@ -19,7 +18,7 @@ const ChooseTodo = () => {
       <div className={style.catBtnContainer}>
         {categories.map((category, i) => (
           <button
-            id={style.prioBtn}
+            id={style.todoFilterBtn}
             key={i}
             onClick={() => handleFilterCategory(category)}
             // Om kategori är valt, då döp klass namn på "activeCat", annars ingenting
