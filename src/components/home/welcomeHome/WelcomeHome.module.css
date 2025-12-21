@@ -43,25 +43,26 @@
 
 .quoteText {
   font-family: Hasweny;
-  font-size: 24px;
+  font-size: 20px;
   font-style: italic;
   letter-spacing: 0.4rem;
-  max-width: 600px;
+  line-height: 2rem;
+  width: fit-content;
+  max-width: 800px;
+  height: 140px;
   text-align: center;
   margin: 3rem auto;
-  padding: 3rem;
+  padding: 2rem;
   /* Text will fade in */
   opacity: 0;
   animation: fadeIn 1.4s ease-in forwards;
   border: 2px solid rgba(105, 105, 105, 0.11);
 }
 
-.quoteAuthor {
-  font-size: 18px;
+#authorText {
+  font-family: inherit;
+  font-size: 1.2rem;
   color: #666;
-  /* Author will fade in */
-  opacity: 0;
-  animation: fadeIn 1s ease-in 0.3s forwards;
 }
 
 .loginBtn {

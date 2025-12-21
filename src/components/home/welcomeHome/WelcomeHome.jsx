@@ -3,7 +3,7 @@ import style from "./WelcomeHome.module.css";
 
 const WelcomeHome = ({ onComplete }) => {
   const [data, setData] = useState(null);
-  //   const [fadeOut, setFadeOut] = useState(false);
+  
 
   useEffect(() => {
     //stops quote from running more than once by adding sessionstorage flag
@@ -28,7 +28,8 @@ const WelcomeHome = ({ onComplete }) => {
   return (
     <div className={`${style.quoteScreen}`}>
       <h3 className={style.quoteHeader}>Todays quote:</h3>
-      {data ? <p className={style.quoteText}>"{data.quote}"</p> : <p className={style.quoteText}>Loading</p>}
+      {data ? <p className={style.quoteText}>"{data.quote}" <br/> <span id={style.authorText}>~ {data.author}</span></p> : <p className={style.quoteText}>Loading</p>}
+
 
       <button className={style.loginBtn}
         onClick={() => {
