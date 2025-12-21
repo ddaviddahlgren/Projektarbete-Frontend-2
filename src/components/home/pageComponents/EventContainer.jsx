@@ -7,21 +7,29 @@ export default function EventContainer() {
   const { loggedInUser } = useContext(UserContext);
 
   const events = loggedInUser?.events || [];
-  const topEvents = [...events].slice(0, 3);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const topEvents = [...events]
+    .filter((event) => new Date(event.date) >= today)
+    .sort((a, b) => new Date(a.date) - new Date(b.date))
+    .slice(0, 3);
 
   return (
     <>
       <div className={style.componentContainer}>
         <h3 className={style.componentTitle}>EVENTS</h3>
-        <h4 className={style.subTitle}>
-          Displayed here are your three nearest upcoming events
-        </h4>
+        <h4 className={style.subTitle}>Displayed here are your three nearest upcoming events</h4>
         <Link to="/events">
           <div className={style.homeContainer}>
             <ul>
               {topEvents.length === 0 && (
-                <p className={style.homeLists}>No events yet<br/>
-                <span id={style.statusText}>CLICK THE BOX TO START</span></p>
+                <p className={style.homeLists}>
+                  No events yet
+                  <br />
+                  <span id={style.statusText}>CLICK THE BOX TO START</span>
+                </p>
               )}
               {topEvents.map((event) => (
                 <li key={event.id} className={style.homeLists}>
