@@ -133,7 +133,7 @@ ul {
   justify-content: center;
   list-style: none;
   padding: auto 0;
-  margin: 1rem auto;
+  margin: 1rem auto;  
   width: 1040px;
   gap: 1rem;
 }
@@ -154,9 +154,11 @@ ul {
 .todoMain, .eventMain {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   max-height: fit-content;
   margin-bottom: 0rem;
+  max-width: 1280px;
 }
 
 .todoContainer {

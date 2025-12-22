@@ -55,7 +55,7 @@ main {
 .componentContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding: 0.5rem auto;
 }
@@ -92,7 +92,7 @@ main {
   justify-content: space-between;
   align-items: center;
   width: 340px;
-  height: 300px;
+  height: fit-content;
   margin-top: 1.5rem;
   background-color: rgb(241, 237, 229);
   padding-left: 1.2em;
